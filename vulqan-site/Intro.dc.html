@@ -139,7 +139,7 @@ class Component extends DCLogic {
       cueAction: this.state.ended ? this.replay : this.skip,
       home: this.goTo('home'),
       nav: [
-        ['impact', 'Our impact'], ['approach', 'Our approach'], ['perspective', 'Our perspective'],
+        ['approach', 'Our approach'], ['impact', 'Our impact'], ['perspective', 'Our perspective'],
         ['product', 'The product'], ['usecases', 'The possibilities'],
         ['people', 'The team'], ['tryit', 'Try it']
       ].map(([id, label]) => ({ id, label, go: this.goTo(id) })),
