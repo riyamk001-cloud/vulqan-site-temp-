@@ -1,0 +1,521 @@
+/* Layer 2b — themes.
+   `<html theme='bg9'>` selects one of 12 named themes. Every theme overrides the same
+   38 tokens and nothing else. Applied once at boot by Ambience.ts → setTheme();
+   the shipped default is BG9 (WebConstants.ts:30).
+
+   There are not twelve designs. There are six accents × two chromes:
+     teal #167d7d   dark→'dark'  light→bg7
+     amber #ab750b  dark→bg2     light→bg8
+     blue #153a89   dark→bg3     light→bg9
+     green #0e5f4c  dark→bg4     light→bg10
+     red #7c0a02    dark→bg5     light→bg11
+     purple #4b1185 dark→bg6     light→bg12
+   A pair differs only in which chrome --mz-primary points at. `dark` is the irregular
+   cell: it occupies the teal slot but sets its chrome to a literal #000 instead of
+   --mz-theme-dark, and it is the only theme not named bgN. */
+
+/* ---- teal · dark chrome ------------------------------------------------- */
+[theme="dark"] {
+  --mz-primary: #000;
+  --mz-secondary: #000;
+  --mz-primary-variant: #000;
+  --mz-primary-variant-bg: #000;
+  --mz-primary-variant-shadow: #000;
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #edeef0;
+  --mz-secondary-variant: #585e6c;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg1);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg1);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #000;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #585e6c;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+/* ---- amber · dark chrome ------------------------------------------------ */
+[theme="bg2"] {
+  --mz-primary: var(--mz-theme-dark);
+  --mz-secondary: var(--mz-theme-bg2);
+  --mz-primary-variant: #de9f24;
+  --mz-primary-variant-bg: #de9f24;
+  --mz-primary-variant-shadow: #de9f24;
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #ffe0a4;
+  --mz-secondary-variant: #fffbf4;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg2);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg2);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #de9f24;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+/* ---- blue · dark chrome ------------------------------------------------- */
+[theme="bg3"] {
+  --mz-primary: var(--mz-theme-dark);
+  --mz-secondary: var(--mz-theme-bg3);
+  --mz-primary-variant: #3059b1;
+  --mz-primary-variant-bg: #3059b1;
+  --mz-primary-variant-shadow: #3059b1;
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #bbd1ff;
+  --mz-secondary-variant: #eaf1ff;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg3);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg3);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #3059b1;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+/* ---- green · dark chrome ------------------------------------------------ */
+[theme="bg4"] {
+  --mz-primary: var(--mz-theme-dark);
+  --mz-secondary: var(--mz-theme-bg4);
+  --mz-primary-variant: #26a386;
+  --mz-primary-variant-bg: #26a386;
+  --mz-primary-variant-shadow: #26a386;
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #a7ffeb;
+  --mz-secondary-variant: #f2fffc;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg4);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg4);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #26a386;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+/* ---- red · dark chrome -------------------------------------------------- */
+[theme="bg5"] {
+  --mz-primary: var(--mz-theme-dark);
+  --mz-secondary: var(--mz-theme-bg5);
+  --mz-primary-variant: #a32a22;
+  --mz-primary-variant-bg: #a32a22;
+  --mz-primary-variant-shadow: #a32a22;
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #f0938d;
+  --mz-secondary-variant: #ffedec;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg5);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg5);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #a32a22;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+/* ---- purple · dark chrome ----------------------------------------------- */
+[theme="bg6"] {
+  --mz-primary: var(--mz-theme-dark);
+  --mz-secondary: var(--mz-theme-bg6);
+  --mz-primary-variant: #6e36a6;
+  --mz-primary-variant-bg: #6e36a6;
+  --mz-primary-variant-shadow: #6e36a6;
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #d5b5f4;
+  --mz-secondary-variant: #fbf7ff;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg6);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg6);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #6e36a6;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+/* ---- light chromes -------------------------------------------------------
+   bg7–bg12 are the same six accents over --mz-theme-light. The design-system
+   export tabulates the first six themes only; these six are reconstructed from
+   the stated rule — "what differs between the pair is which chrome they point
+   --mz-primary at" — so every declaration below is its dark sibling's, with
+   --mz-primary swapped to --mz-theme-light. Teal has no variant values anywhere
+   in the source, so bg7 uses its accent in their place. Flagged in readme.md. */
+[theme="bg7"] {
+  --mz-primary: var(--mz-theme-light);
+  --mz-secondary: var(--mz-theme-bg7);
+  --mz-primary-variant: #167d7d;
+  --mz-primary-variant-bg: #167d7d;
+  --mz-primary-variant-shadow: rgba(149, 152, 156, 0.3);
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #a7ffeb;
+  --mz-secondary-variant: #f2fffc;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg7);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg7);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #eef3ff;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+[theme="bg8"] {
+  --mz-primary: var(--mz-theme-light);
+  --mz-secondary: var(--mz-theme-bg8);
+  --mz-primary-variant: #de9f24;
+  --mz-primary-variant-bg: #de9f24;
+  --mz-primary-variant-shadow: rgba(149, 152, 156, 0.3);
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #ffe0a4;
+  --mz-secondary-variant: #fffbf4;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg8);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg8);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #eef3ff;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+/* the shipped default */
+[theme="bg9"] {
+  --mz-primary: var(--mz-theme-light);
+  --mz-secondary: var(--mz-theme-bg9);
+  --mz-primary-variant: #3059b1;
+  --mz-primary-variant-bg: #3059b1;
+  --mz-primary-variant-shadow: rgba(149, 152, 156, 0.3);
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #bbd1ff;
+  --mz-secondary-variant: #eaf1ff;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg9);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg9);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #eef3ff;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+[theme="bg10"] {
+  --mz-primary: var(--mz-theme-light);
+  --mz-secondary: var(--mz-theme-bg10);
+  --mz-primary-variant: #26a386;
+  --mz-primary-variant-bg: #26a386;
+  --mz-primary-variant-shadow: rgba(149, 152, 156, 0.3);
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #a7ffeb;
+  --mz-secondary-variant: #f2fffc;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg10);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg10);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #eef3ff;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+[theme="bg11"] {
+  --mz-primary: var(--mz-theme-light);
+  --mz-secondary: var(--mz-theme-bg11);
+  --mz-primary-variant: #a32a22;
+  --mz-primary-variant-bg: #a32a22;
+  --mz-primary-variant-shadow: rgba(149, 152, 156, 0.3);
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #f0938d;
+  --mz-secondary-variant: #ffedec;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg11);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg11);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #eef3ff;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}
+
+[theme="bg12"] {
+  --mz-primary: var(--mz-theme-light);
+  --mz-secondary: var(--mz-theme-bg12);
+  --mz-primary-variant: #6e36a6;
+  --mz-primary-variant-bg: #6e36a6;
+  --mz-primary-variant-shadow: rgba(149, 152, 156, 0.3);
+  --mz-primary-variant-light-bg: white;
+  --mz-primary-variant-light-color: #d5b5f4;
+  --mz-secondary-variant: #fbf7ff;
+  --mz-darkBlack1-white-color: var(--mz-primary);
+  --mz-gray4-gray1-color: var(--mz-primary);
+  --mz-side-nav-bg: var(--mz-primary);
+  --mz-workbar-bg: var(--mz-primary);
+  --mz-vz-tab-bg: var(--mz-primary);
+  --mz-vz-toolbar-bg: var(--mz-primary);
+  --mz-editzone-section-head-bg: var(--mz-primary);
+  --mz-editzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-myzone-shadow: var(--mz-primary-variant-shadow);
+  --mz-header-bg: var(--mz-secondary);
+  --mz-vz-tab-selected-bg: var(--mz-secondary);
+  --mz-inputs-hover-boder-color: var(--mz-secondary);
+  --mz-inputs-text-focus: var(--mz-secondary);
+  --mz-inputs-base-color: var(--mz-theme-bg12);
+  --mz-inputs-errored: #b00020;
+  --mz-dflt-selected-activity-clr: var(--mz-theme-bg12);
+  --mz-sm-global_Blue3-color: var(--mz-secondary);
+  --mz-sm-global_Blue4-color: var(--mz-secondary);
+  --mz-sm-global_bg-color: var(--mz-secondary);
+  --mz-widget-active-label-color: var(--mz-secondary);
+  --mz-rvp-global-blue-50: #eef3ff;
+  --mz-search-bg-color: var(--mz-rvp-global-gray-700);
+  --mz-sm-gray3-color: #585e6c;
+  --mz-sm-white-color: #ffffff;
+  --mz-white-darkblack2-color: var(--mz-theme-light);
+  --mz-rvp-global-gray-shade: #edeef0;
+  --mz-rvp-global-table-selected: #f4f4f4;
+  --mz-rvp-light-border-gray: #f3f3f3;
+  --mz-rvp-light-chip-green: #46b99f;
+  --mz-rvp-light-table-header: #f4f4f4;
+}

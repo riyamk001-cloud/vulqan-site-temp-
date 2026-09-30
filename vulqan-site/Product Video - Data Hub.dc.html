@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Roboto+Mono:wght@400;600&amp;display=swap">
+<script>window.OM_SCENES = '[{"name":"Title","dur":4,"desc":"Title card"},{"name":"L1","dur":4.1,"desc":"See your data as a knowledge graph, table or tiles."},{"name":"L2","dur":3.2,"desc":"Track quality and lineage for every record."},{"name":"L3","dur":3.4,"desc":"Edit in bulk, with full enterprise controls."},{"name":"L4","dur":4,"desc":"Data Hub: a living store of your logical context."},{"name":"Outro","dur":0.6,"desc":"Fade out"}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"loop"}';</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>html,body{margin:0;padding:0;background:#05080f;}*{box-sizing:border-box;}a{color:#1784f1;text-decoration:none;}a:hover{color:#7db3ee;}</style>
+</helmet>
+<div style="position:fixed;inset:0;background:#05080f">
+  <x-import component-from-global-scope="CompositionStage" from="./animations-v3.jsx ./product-viz.jsx ./product-vid.jsx" width="{{ 1920 }}" height="{{ 1080 }}" scenes="{{ scenes }}" playback="{{ playback }}" bg="#020409" hint-size="100%,100%">
+    <x-import component-from-global-scope="ProductVidPiece" vid="hub" captions="{{ captions }}" voiceover="{{ voiceover }}" hint-size="100%,100%"></x-import>
+  </x-import>
+  <sc-if value="{{ showVoiceBtn }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ enableVoice }}" style="position:fixed;top:16px;right:16px;z-index:50;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:4px;border:1px solid #1d2d5a;background:#0b1428;color:#fafbfc;font:500 15px Inter,system-ui,sans-serif;cursor:pointer" style-hover="background:#13203a">
+      <span class="material-icons" style="font-size:18px;color:#6fe3ff">volume_up</span>Turn on voiceover
+    </button>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;voiceover&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;captions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { voiceOn: !!window.__vqVoiceOn };
+  enableVoice = () => {
+    const ss = window.speechSynthesis;
+    if (ss) { ss.cancel(); const u = new SpeechSynthesisUtterance('Voiceover on'); const v = ss.getVoices().find(x => /UK English Female/i.test(x.name)) || ss.getVoices().find(x => /en-GB/i.test(x.lang)); if (v) u.voice = v; u.lang = 'en-GB'; ss.speak(u); }
+    window.__vqVoiceOn = true;
+    window.dispatchEvent(new Event('vq-voice-on'));
+    this.setState({ voiceOn: true });
+  };
+  renderVals() {
+    return {
+      scenes: window.OM_SCENES,
+      playback: window.OM_PLAYBACK,
+      captions: this.props.captions ?? true,
+      voiceover: this.props.voiceover ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

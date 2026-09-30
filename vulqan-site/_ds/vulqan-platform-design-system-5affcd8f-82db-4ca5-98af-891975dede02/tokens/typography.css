@@ -1,0 +1,47 @@
+/* Typography.
+   The platform declares no font family anywhere — see tokens/fonts.css.
+   Size is a rem alias table: --mz-fnt-sz-rem-X-Y is literally X.Yrem and can never be
+   anything else. 29 of the 264 tokens are never read and most of them live here; the
+   ladder was filled in exhaustively rather than on demand.
+
+   Root font size is 10.8px under density='full' (themes-density.scss:1005) — the only
+   place density touches type, and the only rule under a `full` selector. So 1.4rem, the
+   button size, is ~15px in the running application. Setting no density attribute leaves
+   the UA default and gives a third rendering the settings UI cannot produce. */
+[density="full"] {
+  font-size: 10.8px;
+}
+
+:root {
+  /* The 10.8px above is the only root font-size rule in the shipped SCSS, and it sits
+     under a `full` selector. Taken literally, picking `compact` would drop the root back
+     to the UA default and double the whole interface — which the export would have
+     flagged far more loudly than the milder point it does make. The base declaration
+     below is therefore assumed, not copied. It is the one place this system fills in a
+     value the source does not state. */
+  font-size: 10.8px;
+  --mz-fnt-sz-rem-1-0: 1rem;
+  --mz-fnt-sz-rem-1-1: 1.1rem;
+  --mz-fnt-sz-rem-1-2: 1.2rem;
+  --mz-fnt-sz-rem-1-3: 1.3rem;
+  --mz-fnt-sz-rem-1-4: 1.4rem; /* mz-button, and the de-facto body size */
+  --mz-fnt-sz-rem-1-5: 1.5rem;
+  --mz-fnt-sz-rem-1-6: 1.6rem;
+  --mz-fnt-sz-rem-1-7: 1.7rem; /* section headers */
+  --mz-fnt-sz-rem-1-8: 1.8rem;
+  --mz-fnt-sz-rem-2-0: 2rem;
+  --mz-fnt-sz-rem-2-2: 2.2rem;
+  --mz-fnt-sz-rem-2-4: 2.4rem;
+  --mz-fnt-sz-rem-2-6: 2.6rem;
+  --mz-fnt-sz-rem-3-0: 3rem;
+  --mz-fnt-sz-rem-4-0: 4rem;
+  --mz-fnt-sz-rem-5-0: 5rem;
+  --mz-fnt-sz-rem-6-0: 6rem;
+  --mz-fnt-sz-rem-8-0: 8rem;
+
+  /* weight — the only two the system uses. mz-button pins 500 and turns
+     text-transform off, which is the single largest visible departure from Material. */
+  --mz-fnt-wght-regular: 400; /* @kind font */
+  --mz-fnt-wght-medium: 500; /* @kind font */
+  --mz-fnt-wght-semibold: 600; /* @kind font */
+}

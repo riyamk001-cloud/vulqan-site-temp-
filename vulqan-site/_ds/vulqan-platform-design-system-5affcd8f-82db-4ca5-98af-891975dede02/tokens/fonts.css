@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons+Outlined");
+
+/* The platform never declares a font. `--mz-font-family` and `--mz-default-font` are both
+   in the 52 referenced-but-undefined tokens, so type falls through to Material's own
+   Roboto stack in shadow DOM and to the UA default outside it. Inter is what the shipped
+   design-system export renders its own UI mockups in; it is used here as the documented
+   face. See readme.md → VISUAL FOUNDATIONS → Typography for the substitution note. */
+:root {
+  --mz-font-family: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --mz-default-font: var(--mz-font-family);
+  --mz-font-mono: "Roboto Mono", ui-monospace, Menlo, Consolas, monospace;
+}

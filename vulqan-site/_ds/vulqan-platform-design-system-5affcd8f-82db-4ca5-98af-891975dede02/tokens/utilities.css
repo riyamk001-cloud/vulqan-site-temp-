@@ -1,0 +1,165 @@
+/* Layer 3 — utility classes.
+   `stylesBasics` in StylesUtils.ts maps 110 semantic keys to these class names, and is
+   used in 717 files — the most widely shared thing in the frontend. Components import
+   the constant, never the string: class="${stylesBasics.flexHorLeft}".
+   Layout, sizing, spacing, overflow, alignment. Almost no colour — colour is the theme
+   layer's job. The rules below are the compiled comp-basics.scss, verbatim.
+
+   Twelve of the 110 constants name a class with no rule anywhere. They are listed at the
+   bottom of this file and deliberately left with no rule here too, because reproducing
+   them as working classes would misrepresent the system. `.field-holder` is the second
+   most-used constant in the codebase and does nothing. */
+
+.flex-grow-dynam { flex-grow: 1 }
+.flex-grow-dynam-2 { flex-grow: 2 }
+.flex-grow-dynam-4 { flex-grow: 4 }
+.flex-grow-fixed { flex-grow: 0; flex-shrink: 0 }
+.flex-algn-itms-ctr { align-items: center }
+.flx-hor-lft { display: flex; flex-flow: row; justify-content: flex-start }
+.flx-hor-rght { display: flex; flex-flow: row; justify-content: flex-end }
+.flx-hor-ctr { display: flex; flex-flow: row; justify-content: center }
+.flx-hor-spc-btwn { display: flex; flex-flow: row; justify-content: space-between }
+.flx-hor-spc-arnd { display: flex; flex-flow: row; justify-content: space-around }
+.flx-hor-spc-btwn-algn-ctr { display: flex; flex-flow: row; justify-content: space-between; align-items: center }
+.flx-ver-top { display: flex; flex-flow: column }
+.flx-ver-ctr { display: flex; flex-flow: column; justify-content: center }
+.flx-ver-bottom { display: flex; flex-flow: column; justify-content: end }
+.flx-ver-item-ctr { display: flex; align-items: center }
+.flx-row { display: flex; flex-direction: row; flex-wrap: nowrap; padding: 0 }
+.flx-col { display: flex; flex-direction: column; flex-wrap: nowrap; padding: 0 }
+.flex-jstfy-cnt { justify-content: space-between }
+.flex-jstfy-evenly { justify-content: space-evenly }
+.flex-wrap { flex-wrap: wrap }
+.gap-10 { gap: 1rem }
+
+.hght-wdth-100pct { height: 100%; width: 100% }
+.hght-100pct { height: 100% }
+.wdth-100pct { width: 100% }
+.wdth-50pct { width: 50% }
+
+.ovf-hidden { overflow: hidden }
+.custom-ovf-hidden { overflow: hidden }
+.ovf-hidden-x { overflow-x: hidden }
+.ovf-auto { overflow: auto }
+.thin-scroll { scrollbar-width: thin }
+.dspy-none { display: none }
+.vis-hdn { visibility: hidden }
+.pointer-none { pointer-events: none }
+.pos-rel { position: relative }
+.pos-abs { position: absolute }
+.flt-rght { float: right }
+.flt-lft { float: left }
+.cur-pntr { cursor: pointer }
+
+.cntr-algn { text-align: center }
+.lft-algn { text-align: left }
+.rght-algn { text-align: right }
+.bold { font-weight: bold }
+.lineHeight { line-height: 1 }
+.text-format { text-overflow: ellipsis; display: flex; min-width: 10%; overflow: hidden; white-space: nowrap }
+.fnt-sz-50-pct { font-size: 50% }
+.fnt-sz-60-pct { font-size: 60% }
+.fnt-sz-70-pct { font-size: 70% }
+.fnt-sz-80-pct { font-size: 80% }
+.fnt-sz-90-pct { font-size: 90% }
+.fnt-sz-105-pct { font-size: 105% }
+.fnt-sz-110-pct { font-size: 110% }
+.fnt-sz-115-pct { font-size: 115% }
+.fnt-size-3 { font-size: 3rem }
+
+.fields-gap { margin: 3rem 0 }
+.mgn-top-2 { margin-top: 6px; margin-left: unset }
+.mgn-top-8 { margin-top: 8px }
+.mgn-top-4 { margin-top: 4rem }
+.mgn-top-1rem { margin-top: 1rem }
+.mgn-top-2rem { margin-top: 2rem }
+.mgn-top-3rem { margin-top: 3rem }
+.mgn-top-4rem { margin-top: 4rem }
+.mgn-lft { margin-left: 12px; font-size: var(--mz-fnt-sz-rem-1-2) }
+.mgn-lft-auto { margin-left: auto }
+.mgn-lft-1rem { margin-left: 1rem }
+.mgn-lft-2rem { margin-left: 2rem }
+.mgn-lft-3rem { margin-left: 3rem }
+.mgn-lft-4rem { margin-left: 4rem }
+.mgn-rght-1rem { margin-right: 1rem }
+.mgn-rght-2rem { margin-right: 2rem }
+.mgn-rght-3rem { margin-right: 3rem }
+.mgn-rght-4rem { margin-right: 4rem }
+.mgn-btm-1rem { margin-bottom: 1rem }
+.mgn-btm-2rem { margin-bottom: 2rem }
+.mgn-btm-3rem { margin-bottom: 3rem }
+.mgn-btm-4rem { margin-bottom: 4rem }
+.pad-arnd-1rem { padding: 1rem }
+.pad-arnd-2rem { padding: 2rem }
+.pad-arnd-3rem { padding: 3rem }
+.padding-0-1 { padding: 0 1rem }
+.padding-around { padding: 4rem 1rem 4rem 1rem }
+
+.border-4 { border: var(--mz-border-1) }
+.border-btm { border-bottom: var(--mz-border-1) }
+.border-lft-rgt { border-left: var(--mz-border-1); border-right: var(--mz-border-1) }
+.brdr-top { border-top: 1px solid rgb(192, 192, 192) }
+.lft-pnl { border: var(--mz-border-1); margin-left: 1rem }
+.rgt-pnl { border: var(--mz-border-1); margin-right: 1rem }
+.ctr-pnl { border: var(--mz-border-1); margin: 0 1rem }
+
+.card {
+  transition: var(--mz-transition-card);
+  background-color: #fff;
+  box-shadow: var(--mz-shadow-card);
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: var(--mz-radius-card);
+  margin: 10px;
+  overflow: hidden;
+}
+.link { cursor: pointer; color: var(--mz-secondary) }
+.dflt-text { color: var(--mz-darkBlack1-lightGray-color) }
+.dflt-text-on-thm-bg { color: var(--mz-dflt-fnt-clr-on-theme-bg) }
+
+.dialog-bottom-controls { display: flex; justify-content: flex-end; margin: 1rem }
+.dialog-close-btn-hldr {
+  display: flex;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  background: var(--mz-secondary);
+  border-radius: var(--mz-radius-pill);
+  align-items: center;
+  justify-content: center;
+  color: var(--mz-close-btn-text-color);
+}
+.full-size-dialog { height: calc(94vh - 69px); overflow: hidden }
+.full-size-dialog-no-bottom-controls { height: calc(94vh - 40px); overflow: hidden }
+.half-size-dialog { height: calc(82vh - 69px); overflow: hidden }
+
+.report-acc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.6rem;
+  background-color: rgb(242, 242, 242);
+  padding: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgb(192, 192, 192);
+}
+.temp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: var(--mz-fnt-sz-rem-1-7);
+  color: var(--mz-secondary);
+  padding: 0.7rem 1rem 0.7rem 1.3rem;
+  background-color: var(--mz-primary-variant-light-color);
+  border-bottom: var(--mz-border-1);
+}
+
+/* No rule anywhere — reproduced as names only, exactly as they ship:
+   .field-holder (721 uses, 216 files) · .body (141 uses) · .class-one-dlg ·
+   .class-two-dlg · .class-three-dlg · .class-four-dlg · .class-five-dlg ·
+   .class-one-full-height-dlg · .class-two-full-height-dlg ·
+   .class-three-full-height-dlg · .class-four-full-height-dlg · .full-size-dlg
+   Note the exported constant for the fifth is spelled `diaologClassFive`. */

@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/tokens/palette.css">
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/tokens/colors.css">
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/tokens/themes.css">
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/tokens/typography.css">
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/tokens/density.css">
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/tokens/layout.css">
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/tokens/utilities.css">
+<link rel="stylesheet" href="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/styles.css">
+<script src="_ds/vulqan-platform-design-system-5affcd8f-82db-4ca5-98af-891975dede02/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  :root{
+    --vq-bg:#05080f;
+    --vq-panel:#0e1730;
+    --vq-panel-hi:#13203a;
+    --vq-border:#1d2d5a;
+    --vq-accent:#1784f1;
+    --vq-accent-2:#457bcc;
+    --vq-body:#95989c;
+    --vq-head:#fafbfc;
+    --vq-red:#ba3636;
+    --vq-green:#2fa26c;
+    --vq-sans:'Inter',system-ui,sans-serif;
+    --vq-mono:'Roboto Mono',ui-monospace,monospace;
+    font-size:16px;
+  }
+  html{scrollbar-gutter:stable;}
+  html,body{margin:0;padding:0;background:#05080f;overflow-x:hidden;}
+  *{box-sizing:border-box;}
+  ::selection{background:#1784f1;color:#fff;}
+  a{color:#1784f1;text-decoration:none;}
+  a:hover{color:#7db3ee;}
+  @keyframes vqSubIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @keyframes vqBlink{0%,100%{opacity:1}50%{opacity:0}}
+  @keyframes vqFlow{0%{offset-distance:0%;opacity:0}6%{opacity:.9}90%{opacity:.9}100%{offset-distance:100%;opacity:0}}
+  @keyframes vqStrike{to{width:calc(100% - 22px)}}
+  @media (max-width:900px){
+    .vq-people{grid-template-columns:minmax(0,1fr) !important}
+    .vq-g3{grid-template-columns:minmax(0,1fr) !important}
+  }
+  @keyframes vqDriftA{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+  @keyframes vqDriftB{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+  @keyframes vqLoc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes vqNeon{0%{box-shadow:0 0 0 rgba(23,132,241,0),inset 0 0 60px rgba(23,132,241,.08)}14%{box-shadow:0 0 52px rgba(23,132,241,.7),inset 0 0 80px rgba(23,132,241,.34)}100%{box-shadow:0 0 20px rgba(23,132,241,.22),inset 0 0 64px rgba(23,132,241,.14)}}
+  @keyframes vqFadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes vqDrop{from{background-position:0 0}to{background-position:0 30px}}
+  @keyframes vqRise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .vq-term,.vq-note{animation:vqRise .55s cubic-bezier(.2,.7,.3,1) both}
+  .vq-term{animation-delay:0s}
+  .vq-g3>*:nth-child(1) .vq-note{animation-delay:.7s}
+  .vq-g3>*:nth-child(2) .vq-note{animation-delay:1.15s}
+  .vq-g3>*:nth-child(3) .vq-note{animation-delay:1.6s}
+  @keyframes vqOpen{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+  .vq-tile{perspective:1200px;min-height:0;animation:vqCell .34s linear both}
+  @keyframes vqCell{0%{opacity:0}45%{opacity:1}100%{opacity:1}}
+  .vq-etch{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.12;transition:opacity .25s linear}
+  .vq-face:hover .vq-etch{opacity:.3}
+  @keyframes vqScan{0%{opacity:0;transform:translateX(-8%)}12%{opacity:1}88%{opacity:1}100%{opacity:0;transform:translateX(108%)}}
+  .vq-tile-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.34,.06,.2,1)}
+  .vq-tile.on .vq-tile-in{transform:rotateY(180deg)}
+  .vq-face{position:absolute;inset:0;display:flex;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:5px;border:1px solid #1d2d5a;cursor:pointer;font-family:inherit;text-align:center;transition:border-color .15s linear}
+  .vq-face.back{overflow-y:auto}
+  .vq-face:hover{border-color:#1784f1;background:#16244a!important}
+  .vq-face.back{transform:rotateY(180deg);border-color:#1784f1}
+  @keyframes vqBus{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-1200}}
+  @keyframes vqPad{0%,100%{opacity:.35}50%{opacity:1}}
+  @keyframes vqRoute{0%{stroke-dashoffset:120}100%{stroke-dashoffset:0}}
+  @keyframes vqPadOn{0%,100%{opacity:.6;r:3.4}50%{opacity:1;r:4.6}}
+  .vq-arch{cursor:pointer;font-family:inherit;text-align:center;transition:border-color .15s linear,box-shadow .3s ease}
+  .vq-arch-on{animation:vqNeon .9s ease-out forwards}
+  .vq-open{animation:vqOpen .34s ease-out}
+  .vq-trace{fill:none;stroke:#1d2d5a;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+  .vq-node{fill:#1d2d5a;opacity:.9}
+  .vq-chip{fill:none;stroke:#1d2d5a;stroke-width:1.2;opacity:.55}
+  .vq-pulse{fill:#1784f1;filter:drop-shadow(0 0 5px #1784f1)}
+  .vq-x{position:relative;padding:9px 0 9px 22px;color:#95989c;font-size:18px;opacity:.75;list-style:none}
+  .vq-x::before{content:"\2022";position:absolute;left:0;color:#ba3636}
+  .vq-x::after{content:"";position:absolute;left:22px;top:50%;transform:translateY(-50%);height:2px;background:#ba3636;width:0;animation:vqStrike .5s ease forwards}
+  .vq-col1 .vq-x:nth-child(1)::after{animation-delay:.15s}
+  .vq-col1 .vq-x:nth-child(2)::after{animation-delay:.35s}
+  .vq-col1 .vq-x:nth-child(3)::after{animation-delay:.55s}
+  .vq-col1 .vq-x:nth-child(4)::after{animation-delay:.75s}
+  .vq-col1 .vq-x:nth-child(5)::after{animation-delay:.95s}
+  .vq-col1 .vq-x:nth-child(6)::after{animation-delay:1.15s}
+  .vq-col1 .vq-x:nth-child(7)::after{animation-delay:1.35s}
+  .vq-col1 .vq-x:nth-child(8)::after{animation-delay:1.55s}
+  .vq-col2 .vq-x:nth-child(1)::after{animation-delay:1.9s}
+  .vq-col2 .vq-x:nth-child(2)::after{animation-delay:2.1s}
+  .vq-col2 .vq-x:nth-child(3)::after{animation-delay:2.3s}
+  .vq-col2 .vq-x:nth-child(4)::after{animation-delay:2.5s}
+  .vq-col2 .vq-x:nth-child(5)::after{animation-delay:2.7s}
+  .vq-col2 .vq-x:nth-child(6)::after{animation-delay:2.9s}
+  .vq-col2 .vq-x:nth-child(7)::after{animation-delay:3.1s}
+  .vq-col2 .vq-x:nth-child(8)::after{animation-delay:3.3s}
+  .vq-real{position:relative;padding:16px 0 4px 22px;margin-top:8px;color:#fafbfc;font-weight:600;font-size:19px;line-height:1.45;list-style:none}
+  .vq-real::before{content:"\2022";position:absolute;left:0;top:16px;color:#2fa26c}
+  @media (max-width:900px){
+    .vq-g2,.vq-g3{grid-template-columns:1fr !important;}
+  }
+  @media (max-width:1080px){
+    .vq-nav-links{flex-wrap:wrap;gap:12px !important;font-size:14px;}
+  }
+  .vq-static .vq-x::after{animation:none !important;width:calc(100% - 22px) !important}
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  }
+</style>
+</helmet>
+
+<sc-if value="{{ introOn }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:100;background:#05080f;overflow:auto">
+    <dc-import name="Intro" onDone="{{ finishIntro }}" hint-size="100%,100vh"></dc-import>
+  </div>
+</sc-if>
+
+<div class="vq-shell vq-static" ref="{{ shellRef }}" style="position:relative;z-index:1;display:flex;flex-direction:column;min-height:var(--vq-vh,100vh);background:#05080f;font-family:var(--vq-sans);color:#95989c">
+
+  <header style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:28px clamp(20px,4vw,56px);background:rgba(13,20,36,.92);border-bottom:1px solid #1d2d5a;flex:none">
+    <a href="Landing.dc.html" aria-label="Vulqan home" style="display:flex;align-items:center">
+      <img src="assets/vulqan-logo.png" alt="Vulqan" style="height:22px;width:auto;display:block">
+    </a>
+    <nav class="vq-nav-links" style="display:flex;gap:clamp(12px,2.2vw,36px);align-items:center;flex:0 0 auto;min-width:max-content;flex-wrap:nowrap">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+        <a href="{{ item.href }}" style="{{ item.style }}" style-hover="color:#ffffff">{{ item.label }}</a>
+      </sc-for>
+    </nav>
+    <a href="mailto:info@vulqan.ai" style="flex:none;background:#457bcc;color:#fff;border:1px solid #457bcc;border-radius:4px;padding:9px 16px;font-size:13px;font-weight:500;white-space:nowrap;transition:background .15s linear" style-hover="background:#1784f1;color:#ffffff">Book a call</a>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <main style="flex:1 0 auto;display:flex;align-items:center;justify-content:center;position:relative;min-height:calc(var(--vq-vh,100vh) - 63px)">
+      <div style="position:absolute;inset:0;z-index:0;pointer-events:none">
+        <svg data-circuit="hero" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block"></svg>
+      </div>
+      <div style="max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+        <h1 style="position:relative;z-index:1;margin:0;font-size:clamp(34px,7.2vw,104px);font-weight:600;line-height:1.04;letter-spacing:-.015em;color:#fafbfc;white-space:nowrap">Vulqanize your data.</h1>
+      </div>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isApproach }}" hint-placeholder-val="{{ false }}">
+    <main onClick="{{ closeArch }}" data-circuit-host="1" style="position:relative;flex:1 0 auto;display:flex;flex-direction:column;justify-content:center">
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5">
+        <svg data-circuit="hero" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block"></svg>
+      </div>
+      <section style="position:relative;z-index:1;flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(10px,1.4vh,20px) 0">
+        <div style="max-width:min(1760px,95vw);margin:0 auto;padding:0 clamp(20px,4vw,56px);width:100%">
+          <h1 style="margin:0;font-size:clamp(28px,4.2vw,60px);line-height:1.06;font-weight:600;color:#fafbfc;white-space:nowrap;text-align:center">Data unification requires a new architecture</h1>
+          <div style="position:relative;margin-top:clamp(24px,4.4vh,54px)">
+          
+          <div style="position:relative">
+            <div aria-hidden="true" style="position:absolute;left:calc(33.3333% - 4.6667px);top:50%;transform:translate(-50%,-50%);z-index:2;width:72px;height:72px;border-radius:50%;background:#1a2c4e;border:2px solid #1784f1;display:flex;align-items:center;justify-content:center;color:#1784f1;pointer-events:none"><svg viewBox="0 0 40 20" style="width:38px;height:19px;display:block"><path d="M11 4L4 10l7 6M29 4l7 6-7 6M5 10h30" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+            <div aria-hidden="true" style="position:absolute;left:calc(66.6666% + 4.6667px);top:50%;transform:translate(-50%,-50%);z-index:2;width:72px;height:72px;border-radius:50%;background:#1a2c4e;border:2px solid #1784f1;display:flex;align-items:center;justify-content:center;color:#1784f1;pointer-events:none"><svg viewBox="0 0 40 20" style="width:38px;height:19px;display:block"><path d="M11 4L4 10l7 6M29 4l7 6-7 6M5 10h30" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+            <div class="vq-g3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+              <sc-for list="{{ arches }}" as="a" hint-placeholder-count="3">
+                <div style="background:#05080f;border-radius:18px">
+                <button type="button" onClick="{{ a.onClick }}" class="{{ a.cls }}" style="{{ a.style }}" style-hover="background:#152344">
+                  <div class="vq-term" style="margin-top:auto;font-size:clamp(22px,1.85vw,32px);font-weight:600;line-height:1.16;letter-spacing:-.015em;color:#fafbfc;text-wrap:balance">{{ a.term }}</div>
+                  <div style="{{ a.noteStyle }}">{{ a.note }}</div>
+                  <div style="{{ a.ctaStyle }}">
+                    <span>{{ a.cta }}</span>
+                    <svg viewBox="0 0 12 8" aria-hidden="true" style="{{ a.caretStyle }}"><path d="M1 1.5L6 6.5l5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </div>
+                </button>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="min-height:clamp(250px,27vh,310px);margin-top:28px">
+            <sc-if value="{{ hasOpen }}" hint-placeholder-val="{{ false }}">
+              <div class="vq-open" style="background:#0e1730;border:1px solid #1784f1;border-radius:5px;padding:32px 34px 34px">
+                <div style="display:grid;grid-template-columns:minmax(0,1fr) clamp(320px,30vw,560px);gap:clamp(28px,3vw,48px);align-items:stretch" data-compact-keep="1">
+                  <div>
+                    <p style="margin:0;font-size:clamp(18px,1.45vw,23px);line-height:1.56;color:#c9ccd2;text-wrap:pretty">{{ openBody }}</p>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:7px;height:100%">
+                  <div style="position:relative;flex:1 1 auto;min-height:clamp(190px,21vh,250px);border:1px solid #1d2d5a;border-radius:5px;overflow:hidden">
+                    <sc-if value="{{ openHasImg }}" hint-placeholder-val="{{ false }}">
+                      <img src="{{ openImg }}" alt="{{ openSlotHint }}" style="{{ openImgStyle }}">
+                    </sc-if>
+                    <sc-if value="{{ openNoImg }}" hint-placeholder-val="{{ true }}">
+                      <image-slot id="{{ openSlotId }}" shape="rect" placeholder="{{ openSlotHint }}"></image-slot>
+                    </sc-if>
+                  </div>
+                  <sc-if value="{{ openHasCaption }}" hint-placeholder-val="{{ false }}">
+                    <p style="margin:0;font-size:12.5px;line-height:1.4;color:#c9ccd2">{{ openCaption }}</p>
+                  </sc-if>
+                  </div>
+                </div>
+
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isPerspective }}" hint-placeholder-val="{{ false }}">
+    <main style="flex:1 0 auto;display:flex;flex-direction:column;position:relative">
+      <section style="flex:1;display:flex;flex-direction:column;padding:clamp(10px,1.2vh,16px) 0 clamp(28px,3.6vh,52px)">
+        <div style="flex:1;max-width:min(1760px,95vw);width:100%;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;min-height:0">
+
+          <div style="flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:18px">
+            <sc-for list="{{ entries }}" as="e" hint-placeholder-count="6">
+              <button type="button" onClick="{{ e.onClick }}" style="{{ e.rowStyle }}" style-hover="background:#16244a;border-color:#33497a">
+                <div style="container-type:inline-size;padding:18px 20px 14px;display:flex;flex-direction:column;gap:9px;min-width:0">
+                  <h3 style="{{ e.titleStyle }}">{{ e.title }}</h3>
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-family:var(--vq-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase">
+                    <span style="color:#1784f1">{{ e.channel }}</span>
+                    <span style="color:#95989c;white-space:nowrap;letter-spacing:.06em;text-transform:none;font-size:12px">{{ e.date }}</span>
+                  </div>
+                </div>
+                <div style="{{ e.thumbStyle }}">
+                  <sc-if value="{{ e.hasImg }}" hint-placeholder-val="{{ false }}">
+                    <img src="{{ e.img }}" alt="{{ e.title }}" style="{{ e.imgStyle }}">
+                  </sc-if>
+                  <sc-if value="{{ e.noImg }}" hint-placeholder-val="{{ true }}">
+                    <image-slot id="{{ e.slotId }}" shape="rect" placeholder="{{ e.slotHint }}"></image-slot>
+                  </sc-if>
+                </div>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <sc-if value="{{ postOpen }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ closePost }}" style="position:absolute;inset:0;z-index:39;background:rgba(4,7,13,.72);transition:opacity .2s linear"></div>
+          <div class="vq-open" style="position:absolute;top:0;right:0;bottom:0;z-index:40;width:min(560px,44vw);background:#0b1428;border-left:1px solid #2b4a8f;box-shadow:-24px 0 60px rgba(0,0,0,.55);display:flex;flex-direction:column;overflow-y:auto">
+            <div style="flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;border-bottom:1px solid #1d2d5a">
+              <span style="font-family:var(--vq-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#1784f1">{{ postChannel }}</span>
+              <button type="button" onClick="{{ closePost }}" style="display:flex;background:transparent;border:1px solid #1d2d5a;border-radius:4px;padding:5px;color:#95989c;cursor:pointer;font:inherit" style-hover="border-color:#7db3ee;color:#ffffff">
+                <span class="material-icons" style="font-size:18px">close</span>
+              </button>
+            </div>
+            <div style="flex:none;position:relative;aspect-ratio:16/9;border-bottom:1px solid #1d2d5a;background:#080e1c;overflow:hidden">
+              <sc-if value="{{ postHasImg }}" hint-placeholder-val="{{ false }}">
+                <img src="{{ postImg }}" alt="{{ postTitle }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0%">
+              </sc-if>
+              <sc-if value="{{ postNoImg }}" hint-placeholder-val="{{ true }}">
+                <image-slot id="{{ postSlotId }}" shape="rect" placeholder="Article image" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+              </sc-if>
+            </div>
+            <div style="container-type:inline-size;flex:1;display:flex;flex-direction:column;gap:18px;padding:26px 28px 30px">
+              <div style="font-family:var(--vq-mono);font-size:12px;letter-spacing:.06em;color:#95989c">{{ postDate }}</div>
+              <h2 style="{{ postTitleStyle }}">{{ postTitle }}</h2>
+              <sc-for list="{{ postBody }}" as="para" hint-placeholder-count="3">
+                <p style="margin:0;font-size:21px;line-height:1.6;color:#c9ccd2;text-wrap:pretty">{{ para }}</p>
+              </sc-for>
+              <a href="{{ postHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:auto;align-self:flex-start;background:#16244a;border:1px solid #2b4a8f;border-radius:4px;padding:12px 18px;font-family:var(--vq-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fafbfc" style-hover="border-color:#1784f1;color:#ffffff">{{ postCta }} <span style="font-size:15px">&#8599;</span></a>
+            </div>
+          </div>
+        </sc-if>
+      </section>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isProduct }}" hint-placeholder-val="{{ false }}">
+    <main style="flex:1 0 auto;display:flex;flex-direction:column">
+      <section style="flex:1;display:flex;flex-direction:column;padding:clamp(10px,1.2vh,16px) 0 clamp(28px,3.6vh,52px)">
+        <div style="flex:1;max-width:min(1760px,95vw);width:100%;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;min-height:0">
+
+          <div style="display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch;gap:0;margin-top:clamp(10px,1.4vh,18px);background:#13203a;border:1px solid #1d2d5a;border-radius:5px 5px 0 0;overflow:hidden">
+            <div style="display:flex;flex-wrap:nowrap;align-items:stretch;justify-content:space-between;min-width:0;overflow:hidden;padding-right:clamp(16px,2vw,32px)">
+            <div style="display:flex;align-items:center;flex:0 0 auto;padding:0 clamp(10px,1.4vw,24px) 0 clamp(6px,.8vw,12px)">
+              <img src="assets/vulqan-q.png" alt="Vulqan" style="display:block;height:26px;width:auto">
+            </div>
+            <sc-for list="{{ modules }}" as="m" hint-placeholder-count="6">
+              <div style="{{ m.wrapStyle }}">
+                <button type="button" onClick="{{ m.pick }}" style="{{ m.tabStyle }}">{{ m.name }}</button>
+                <span style="{{ m.sepStyle }}">&mdash;</span>
+              </div>
+            </sc-for>
+            </div>
+          </div>
+
+          <div style="{{ productGridStyle }}">
+            <div style="position:relative;width:100%;min-width:0;height:100%;background:#04070d">
+              <sc-if value="{{ hasVideo }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 18% 22%,rgba(23,132,241,.11),transparent 70%),radial-gradient(ellipse 55% 60% at 85% 80%,rgba(125,179,238,.07),transparent 70%),radial-gradient(ellipse 80% 70% at 50% 50%,rgba(20,32,60,.45),transparent 75%),#050a17;padding:clamp(14px,2.2%,32px);display:flex">
+                  <audio ref="{{ voRef }}" src="assets/vo-all-3.mp3" preload="auto"></audio>
+                  <button type="button" onClick="{{ toggleSound }}" title="{{ soundTitle }}" style="position:absolute;top:clamp(18px,2.4vh,30px);right:clamp(22px,2.2vw,36px);z-index:6;display:flex;flex:none;white-space:nowrap;align-items:center;gap:6px;padding:8px 14px 8px 10px;border:1px solid #24365f;border-radius:100px;background:rgba(11,20,40,.88);color:#fafbfc;font:500 14px var(--mz-font-family,Inter),system-ui,sans-serif;cursor:pointer" style-hover="border-color:#7db3ee"><span class="material-icons" style="font-size:18px;color:#1784f1">{{ soundIcon }}</span>{{ soundLabel }}</button>
+                  <sc-if value="{{ hasPlayer }}" hint-placeholder-val="{{ false }}">
+                    <iframe onLoad="{{ onPlayerLoad }}" key="{{ playerKey }}" src="{{ playerSrc }}" title="Product video" allow="autoplay" style="display:block;flex:1;min-width:0;width:100%;height:100%;border:0;background:#04070d;border-radius:6px;box-shadow:0 0 0 1px rgba(125,179,238,.15),0 0 36px rgba(23,132,241,.17),0 16px 44px rgba(2,4,10,.5)"></iframe>
+                  </sc-if>
+                  <sc-if value="{{ hasMp4 }}" hint-placeholder-val="{{ false }}">
+                  <video ref="{{ mp4Ref }}" onTimeUpdate="{{ onMp4Time }}" onPlay="{{ onMp4Time }}" onPause="{{ onMp4Pause }}" onSeeked="{{ onMp4Time }}" src="{{ videoSrc }}" controls="{{ true }}" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" style="display:block;flex:1;min-width:0;width:100%;height:100%;object-fit:cover;background:#04070d;border-radius:6px;box-shadow:0 0 0 1px rgba(125,179,238,.15),0 0 36px rgba(23,132,241,.17),0 16px 44px rgba(2,4,10,.5)"></video>
+                  </sc-if>
+                </div>
+              </sc-if>
+              <sc-if value="{{ noVideo }}" hint-placeholder-val="{{ true }}">
+                <div style="position:absolute;inset:0"><svg data-circuit="chip" viewBox="0 0 400 225" style="width:100%;height:100%;display:block"></svg></div>
+                <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72),transparent 62%);pointer-events:none"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;background:rgba(13,20,36,.62);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;pointer-events:none">
+                  <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#fff;margin-left:3px"><path d="M8 5v14l11-7z"></path></svg>
+                </div>
+                <div style="position:absolute;left:22px;bottom:18px;font-family:var(--vq-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#95989c">{{ activeLabel }}</div>
+              </sc-if>
+            </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isUsecases }}" hint-placeholder-val="{{ false }}">
+    <main style="flex:1 0 auto;min-height:0;display:flex;flex-direction:column">
+      <section style="flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(16px,2.4vh,32px) 0 clamp(18px,2.6vh,36px)">
+        <div style="max-width:min(1760px,95vw);width:100%;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+          <h1 style="margin:0 0 clamp(24px,4.4vh,54px);font-size:clamp(20px,2.7vw,46px);line-height:1.06;font-weight:600;letter-spacing:-.015em;color:#fafbfc;white-space:nowrap;text-align:center">Create logical context while adding value &mdash; one use case at a time</h1>
+          <div style="position:relative">
+          <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:2px;background:#1784f1;animation:vqScan 1.5s cubic-bezier(.4,0,.2,1) .1s both;pointer-events:none;z-index:2"></div>
+          <div class="vq-g4" style="width:100%;max-width:min(1420px,92%);margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:auto;gap:26px">
+            <sc-for list="{{ usecases }}" as="uc" hint-placeholder-count="10">
+              <div class="{{ uc.cls }}" style="{{ uc.style }}">
+                <div class="vq-tile-in" style="{{ uc.innerStyle }}">
+                  <button type="button" class="vq-face" onClick="{{ uc.onClick }}" style="{{ uc.front }}">
+                    <svg class="vq-etch" viewBox="{{ uc.vb }}" preserveAspectRatio="xMidYMid slice" style="{{ uc.svgStyle }}">
+                      <path d="{{ uc.back2 }}" fill="none" stroke="#7f97c8" stroke-width="1"></path>
+                      <path d="{{ uc.etch }}" fill="none" stroke="#1784f1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <sc-for list="{{ uc.nodes }}" as="n" hint-placeholder-count="2">
+                        <circle cx="{{ n.x }}" cy="{{ n.y }}" r="3" fill="#1784f1"></circle>
+                      </sc-for>
+                    </svg>
+                    
+                    <span style="position:absolute;top:11px;left:13px;font-family:var(--vq-mono);font-size:10.5px;letter-spacing:.12em;color:#457bcc">{{ uc.num }}</span>
+                    <span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:8px">
+                      <span style="{{ uc.titleStyle }}">{{ uc.title }}</span>
+                      <sc-if value="{{ uc.hasSub }}" hint-placeholder-val="{{ false }}">
+                        <span style="font-size:clamp(15px,1.15vw,20px);font-weight:400;line-height:1.3;color:#95989c;text-align:center;white-space:nowrap">{{ uc.sub }}</span>
+                      </sc-if>
+                    </span>
+                    <span aria-hidden="true" style="position:absolute;right:12px;bottom:10px;width:14px;height:14px;border-right:1px solid #24365f;border-bottom:1px solid #24365f"></span>
+                  </button>
+                  <button type="button" class="vq-face back" onClick="{{ uc.onClick }}" style="{{ uc.back }}">
+                    <span style="position:absolute;top:0;left:0;bottom:0;width:2px;background:#1784f1"></span>
+                    <span data-fit="b" style="{{ uc.bodyStyle }}">{{ uc.body }}</span>
+                  </button>
+                </div>
+              </div>
+            </sc-for>
+            <sc-for list="{{ ucFeeds }}" as="f" hint-placeholder-count="9">
+              <div aria-hidden="true" style="{{ f.style }}"><div style="{{ f.lineStyle }}"></div></div>
+            </sc-for>
+            <sc-for list="{{ ucHeads }}" as="h" hint-placeholder-count="3">
+              <div aria-hidden="true" style="{{ h.style }}">
+                <sc-for list="{{ h.heads }}" as="hd" hint-placeholder-count="3">
+                  <div style="{{ hd.style }}"></div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isImpact }}" hint-placeholder-val="{{ false }}">
+    <main data-circuit-host="1" style="position:relative;flex:1 0 auto;min-height:0;display:flex;flex-direction:column">
+      <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5">
+        <svg data-circuit="hero" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block"></svg>
+      </div>
+
+      <section style="position:relative;z-index:1;flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(10px,1.4vh,20px) 0 clamp(18px,2.6vh,38px)">
+        <div style="max-width:min(1760px,95vw);margin:0 auto;padding:0 clamp(20px,4vw,56px);width:100%">
+          <h1 style="margin:0 0 clamp(24px,4.4vh,54px);font-size:clamp(16px,2.3vw,46px);line-height:1.06;font-weight:600;letter-spacing:-.015em;color:#fafbfc;text-align:center;white-space:nowrap">We provide the logical intelligence foundation (LIF) for enterprise AI</h1>
+          <div style="display:flex;flex-direction:column;gap:28px">
+            <sc-for list="{{ impacts }}" as="m" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:minmax(0,clamp(320px,28vw,480px)) minmax(0,1fr);gap:28px;align-items:start">
+                <div style="position:relative">
+                  <button type="button" onClick="{{ m.onClick }}" style="{{ m.style }}" style-hover="background:#152344">
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+                      <div style="font-size:clamp(22px,2vw,36px);font-weight:600;line-height:1;letter-spacing:-.025em;color:#fafbfc;white-space:nowrap">{{ m.label }}</div>
+                      <div style="display:flex;align-items:baseline;justify-content:center;gap:10px;flex-wrap:nowrap;min-width:0">
+                        <div style="font-size:clamp(20px,1.6vw,28px);font-weight:500;line-height:1.16;letter-spacing:-.015em;color:#c9ccd2;white-space:nowrap">{{ m.value }}</div>
+                        <div style="{{ m.subStyle }}"><span>{{ m.subX }}</span>{{ m.subRest }}</div>
+                      </div>
+                    </div>
+                    <div style="{{ m.ctaStyle }}">
+                      <span>{{ m.cta }}</span>
+                      <svg viewBox="0 0 8 12" aria-hidden="true" style="{{ m.caretStyle }}"><path d="M1.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </div>
+                  </button>
+                  <sc-if value="{{ m.showDisc }}" hint-placeholder-val="{{ true }}">
+                <div aria-hidden="true" style="position:absolute;left:50%;bottom:-23px;transform:translate(-50%,50%);z-index:2;width:46px;height:46px;border-radius:50%;background:#1a2c4e;border:2px solid #1784f1;display:flex;align-items:center;justify-content:center;color:#1784f1;pointer-events:none"><svg viewBox="0 0 24 24" style="width:20px;height:20px;display:block"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"></path></svg></div>
+                  </sc-if>
+                </div>
+                <sc-if value="{{ m.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="box-sizing:border-box;height:clamp(150px,19vh,220px);overflow-y:auto;background:#0e1730;border:1px solid #1784f1;border-radius:18px;padding:18px 28px;display:flex;align-items:center">
+                    <p style="margin:auto 0;font-size:clamp(17px,1.3vw,24px);line-height:1.45;color:#c9ccd2;text-wrap:pretty">{{ m.body }}</p>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isPeople }}" hint-placeholder-val="{{ false }}">
+    <main style="flex:1 0 auto">
+      <section style="position:relative;padding:28px 0 84px;overflow:hidden">
+        <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+          <div style="position:absolute;left:0;top:0;bottom:0;width:max(200px,calc(50% - 580px));overflow:hidden">
+            <sc-for list="{{ bandsLeft }}" as="b" hint-placeholder-count="3">
+              <div style="{{ b.style }}">
+                <sc-for list="{{ b.items }}" as="c" hint-placeholder-count="16">
+                  <span style="{{ b.textStyle }}">{{ c }}</span>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+          <div style="position:absolute;right:0;top:0;bottom:0;width:max(200px,calc(50% - 580px));overflow:hidden">
+            <sc-for list="{{ bandsRight }}" as="b" hint-placeholder-count="1">
+              <div style="{{ b.style }}">
+                <sc-for list="{{ schoolMarks }}" as="m" hint-placeholder-count="12">
+                  <span style="{{ b.textStyle }}">{{ m.name }}</span>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="position:relative;max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+          <div class="vq-people" style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.86fr);gap:20px;align-items:stretch">
+            <div style="order:2;position:relative;background:#0e1730;border:1px solid #1784f1;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s linear" style-hover="border-color:#7db3ee">
+              <div style="flex:0 0 auto;aspect-ratio:3/4;position:relative;background:#153a89;border-bottom:1px solid #1784f1;overflow:hidden">
+                <sc-if value="{{ leadHasImg }}" hint-placeholder-val="{{ true }}">
+                  <img src="{{ leadSrc }}" alt="{{ lead.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%">
+                </sc-if>
+                <sc-if value="{{ leadNoImg }}" hint-placeholder-val="{{ false }}">
+                  <image-slot id="{{ leadSlotId }}" shape="rect" placeholder="{{ leadSlotLabel }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+                </sc-if>
+              </div>
+              <div style="position:relative;flex:1;padding:20px 24px 24px">
+                <svg aria-hidden="true" viewBox="0 0 300 220" style="position:absolute;inset:0;width:100%;height:100%;opacity:.22;pointer-events:none">
+                  <path d="M18 30 H150 V74 H262 M18 118 H112 V166 H262" fill="none" stroke="#1784f1" stroke-width="1.2" vector-effect="non-scaling-stroke"></path>
+                  <circle cx="262" cy="74" r="2.8" fill="#1784f1"></circle>
+                  <circle cx="262" cy="166" r="2.8" fill="#1784f1"></circle>
+                </svg>
+                <div style="position:relative;font-family:var(--vq-mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:#1784f1;margin-bottom:4px">{{ lead.role }}</div>
+                <h3 style="position:relative;margin:4px 0 8px;font-size:clamp(20px,1.7vw,24px);font-weight:600;color:#fff">{{ lead.name }}</h3>
+                <p style="position:relative;margin:0;font-size:19px;line-height:1.6;color:#c9ccd2;text-wrap:pretty">{{ lead.bio }}</p>
+              </div>
+            </div>
+            <div class="vq-g3" style="order:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:20px;align-content:stretch">
+              <sc-for list="{{ team }}" as="p" hint-placeholder-count="5">
+                <button type="button" onClick="{{ p.onClick }}" style="{{ p.cardStyle }}" style-hover="border-color:#457bcc">
+                  <div style="display:flex;align-items:center;gap:14px;padding:12px 18px;border-bottom:1px solid #1d2d5a;background:#13203a;min-height:56px">
+                    <sc-if value="{{ p.hasImg }}" hint-placeholder-val="{{ false }}">
+                      <span style="flex:0 0 auto;width:38px;height:38px;border-radius:50%;overflow:hidden;background:#153a89;display:block;position:relative">
+                        <img src="{{ p.src }}" alt="{{ p.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 24%">
+                      </span>
+                    </sc-if>
+                    <sc-if value="{{ p.hasSlot }}" hint-placeholder-val="{{ false }}">
+                      <span style="flex:0 0 auto;width:38px;height:38px;border-radius:50%;overflow:hidden;background:#153a89;display:block;position:relative">
+                        <image-slot id="{{ p.slotId }}" placeholder="{{ p.slotLabel }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+                      </span>
+                    </sc-if>
+                    <sc-if value="{{ p.plain }}" hint-placeholder-val="{{ true }}">
+                      <span style="font-family:var(--vq-mono);font-size:20px;font-weight:600;color:#fff;letter-spacing:.02em">{{ p.initials }}</span>
+                    </sc-if>
+                    <span style="font-family:var(--vq-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:#1784f1;text-wrap:balance">{{ p.role }}</span>
+                  </div>
+                  <div style="padding:14px 18px 18px">
+                    <h3 style="margin:0 0 5px;font-size:18px;font-weight:600;color:#fff">{{ p.name }}</h3>
+                    <p style="margin:0;font-size:17px;line-height:1.56;color:#95989c;text-wrap:pretty">{{ p.bio }}</p>
+                  </div>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          <a href="mailto:careers@vulqan.ai" style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;margin-top:20px;background:#0e1730;border:1px solid #1d2d5a;border-radius:5px;padding:26px 28px;color:inherit;text-decoration:none;transition:border-color .15s linear,background-color .15s linear" style-hover="border-color:#457bcc;background:#132038">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;font-family:var(--vq-mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#1784f1;margin-bottom:8px"><span style="width:20px;height:1px;background:#457bcc"></span>Careers</div>
+              <h3 style="margin:0;font-size:clamp(19px,1.9vw,24px);font-weight:600;line-height:1.28;color:#fafbfc;text-wrap:pretty">Want to join the team?</h3>
+              <p style="margin:7px 0 0;font-size:18px;line-height:1.58;color:#95989c;text-wrap:pretty">See available job listings, or write to us at careers@vulqan.ai.</p>
+            </div>
+            <span style="font-family:var(--vq-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#1784f1;white-space:nowrap;display:flex;align-items:center;gap:8px">Open roles <span style="font-size:15px">&rarr;</span></span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isTryit }}" hint-placeholder-val="{{ false }}">
+    <main style="flex:1 1 auto;min-height:0;max-height:calc(100dvh - 88px);overflow:hidden;display:flex;flex-direction:column;position:relative">
+      <section style="flex:1;min-height:0;display:flex;flex-direction:column;padding:clamp(18px,2.4vh,34px) 0 clamp(20px,2.6vh,36px)">
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;width:100%;max-width:min(1120px,94vw);margin:0 auto;padding:0 clamp(20px,4vw,56px)">
+          <div style="position:relative;display:flex;justify-content:center;align-items:center;margin:0 0 clamp(14px,2vh,24px)">
+            <h1 style="margin:0;font-size:clamp(26px,3vw,42px);font-weight:600;line-height:1.06;letter-spacing:-.015em;color:#fafbfc;text-align:center">Get in touch</h1>
+            <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:20">
+              <button type="button" onClick="{{ toggleFaqPanel }}" style="{{ faqBtnStyle }}" style-hover="border-color:#7db3ee;color:#ffffff">FAQ<span class="material-icons" style="{{ faqCaretStyle }}">expand_more</span></button>
+            </div>
+          </div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;position:relative">
+              <sc-if value="{{ faqPanel }}" hint-placeholder-val="{{ false }}">
+              <div class="vq-open" style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;border:1px solid #1784f1;border-radius:6px;overflow:hidden;background:#0e1730;box-shadow:0 0 30px rgba(23,132,241,.18),0 20px 50px rgba(2,4,10,.6)">
+                <div style="{{ faqListStyle }}">
+                  <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="8">
+                    <div style="{{ q.wrapStyle }}">
+                      <button type="button" onClick="{{ q.onClick }}" style="{{ q.qStyle }}">
+                        <span style="flex:1 1 auto;min-width:0;text-align:left">{{ q.q }}</span>
+                        <span style="{{ q.signStyle }}">+</span>
+                      </button>
+                      <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                        <p style="margin:0;padding:4px clamp(14px,1.6vw,22px) 20px;font-size:18px;line-height:1.55;color:#c9ccd2;text-wrap:pretty">{{ q.a }}</p>
+                      </sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              </sc-if>
+          <form onSubmit="{{ submitDemo }}" style="flex:1;min-height:0;display:flex;flex-direction:column;margin:0;background:#101b34;border:1px solid #1784f1;border-radius:6px;box-shadow:0 0 30px rgba(23,132,241,.16),inset 0 0 60px rgba(23,132,241,.06);padding:clamp(24px,3vw,42px)">
+            <div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow-y:auto">
+              <div style="flex:none;display:grid;grid-template-columns:1fr;gap:14px">
+                <label style="display:grid;gap:6px">
+                  <span style="font-family:var(--vq-sans);font-size:17px;font-weight:500;color:#c9ccd2">Name</span>
+                  <input name="name" type="text" required="required" autoComplete="name" style="width:100%;background:#080e1c;border:1px solid #24365f;border-radius:4px;padding:13px 16px;font-family:inherit;font-size:17px;color:#fafbfc;outline:none;transition:border-color .15s linear" style-focus="border-color:#1784f1">
+                </label>
+                <label style="display:grid;gap:6px">
+                  <span style="font-family:var(--vq-sans);font-size:17px;font-weight:500;color:#c9ccd2">Work email</span>
+                  <input name="email" type="email" required="required" autoComplete="email" style="width:100%;background:#080e1c;border:1px solid #24365f;border-radius:4px;padding:13px 16px;font-family:inherit;font-size:17px;color:#fafbfc;outline:none;transition:border-color .15s linear" style-focus="border-color:#1784f1">
+                </label>
+                <label style="display:grid;gap:6px">
+                  <span style="font-family:var(--vq-sans);font-size:17px;font-weight:500;color:#c9ccd2">Company</span>
+                  <input name="company" type="text" style="width:100%;background:#080e1c;border:1px solid #24365f;border-radius:4px;padding:13px 16px;font-family:inherit;font-size:17px;color:#fafbfc;outline:none;transition:border-color .15s linear" style-focus="border-color:#1784f1">
+                </label>
+                <label style="display:grid;gap:6px">
+                  <span style="font-family:var(--vq-sans);font-size:17px;font-weight:500;color:#c9ccd2">Role</span>
+                  <input name="role" type="text" style="width:100%;background:#080e1c;border:1px solid #24365f;border-radius:4px;padding:13px 16px;font-family:inherit;font-size:17px;color:#fafbfc;outline:none;transition:border-color .15s linear" style-focus="border-color:#1784f1">
+                </label>
+              </div>
+              <label style="flex:1;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr);gap:6px;margin-top:16px">
+                <span style="font-family:var(--vq-sans);font-size:17px;font-weight:500;color:#c9ccd2">Describe your use case</span>
+                <textarea name="notes" style="width:100%;height:100%;min-height:80px;background:#080e1c;border:1px solid #24365f;border-radius:4px;padding:14px 16px;font-family:inherit;font-size:17px;line-height:1.55;color:#fafbfc;outline:none;resize:vertical;transition:border-color .15s linear" style-focus="border-color:#1784f1"></textarea>
+              </label>
+            </div>
+              <div style="flex:none;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px">
+                <button type="submit" style="background:#457bcc;color:#fff;border:1px solid #457bcc;border-radius:4px;padding:17px 34px;font-family:inherit;font-size:17px;font-weight:500;cursor:pointer;transition:background .15s linear" style-hover="background:#1784f1;color:#ffffff">Book a demo</button>
+                <sc-if value="{{ demoSent }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-family:var(--vq-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#1784f1">Request sent. We will be in touch.</div>
+                </sc-if>
+              </div>
+          </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ false }}">
+    <footer style="padding:28px clamp(20px,4vw,56px);border-top:1px solid #1d2d5a;flex:none">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:10px">
+          <a href="https://www.linkedin.com/company/vulqan-ai/" aria-label="LinkedIn" style="width:30px;height:30px;border-radius:4px;border:1px solid #1d2d5a;display:flex;align-items:center;justify-content:center;color:#95989c;font-weight:600;font-size:12.5px;transition:border-color .15s linear,color .15s linear" style-hover="border-color:#7db3ee;color:#ffffff">in</a>
+        </div>
+        <a href="mailto:info@vulqan.ai" style="font-size:14px">info@vulqan.ai</a>
+      </div>
+    </footer>
+  </sc-if>
+
+  <sc-if value="{{ showControls }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;right:0;bottom:0;z-index:30;display:flex;justify-content:flex-end;gap:8px;padding:0 20px 18px;pointer-events:none">
+      <button onClick="{{ replayIntro }}" style="pointer-events:auto;background:rgba(13,20,36,.92);border:1px solid #1d2d5a;color:#95989c;font-family:var(--vq-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border-radius:100px;cursor:pointer;white-space:nowrap" style-hover="border-color:#7db3ee;color:#ffffff">Replay intro</button>
+    <sc-if value="{{ animOff }}" hint-placeholder-val="{{ true }}">
+      <button onClick="{{ toggleAnim }}" style="pointer-events:auto;background:rgba(13,20,36,.92);border:1px solid #1d2d5a;color:#95989c;font-family:var(--vq-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border-radius:100px;cursor:pointer;white-space:nowrap" style-hover="border-color:#7db3ee;color:#ffffff">Play animation</button>
+    </sc-if>
+    <sc-if value="{{ animOn }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleAnim }}" style="pointer-events:auto;background:rgba(13,20,36,.92);border:1px solid #457bcc;color:#fafbfc;font-family:var(--vq-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border-radius:100px;cursor:pointer;white-space:nowrap" style-hover="border-color:#7db3ee;color:#ffffff">Static view</button>
+    </sc-if>
+  </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showIntro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;problem&quot;,&quot;perspective&quot;,&quot;product&quot;,&quot;usecases&quot;,&quot;people&quot;,&quot;tryit&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+const NAV = [
+  ['approach', 'Our approach', 'Our-approach.dc.html'],
+  ['impact', 'Our impact', 'Impact.dc.html'],
+  ['perspective', 'Our perspective', 'Perspective.dc.html'],
+  ['product', 'The product', 'Product.dc.html'],
+  ['usecases', 'The possibilities', 'Use-cases.dc.html'],
+  ['people', 'The team', 'People.dc.html'],
+  ['tryit', 'Try it', 'Try-it.dc.html']
+];
+
+const MODULES_SEQ_PATH = i => ['Product Video - Overview', 'Product Video - Data MAIA', 'Product Video - Logic Builder', 'Product Video - Quality Queue', 'Product Video - Data Hub', 'Product Video - Delivery Station', 'Product Video - Ask MAIA'][i];
+class Component extends DCLogic {
+  fitTiles() {
+    document.querySelectorAll('[data-fit]').forEach(el => {
+      const face = el.parentElement; if (!face) return;
+      if (!el.dataset.base) el.dataset.base = el.style.fontSize;
+      el.style.fontSize = el.dataset.base;
+      const cs = getComputedStyle(face);
+      const H = face.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      const W = face.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      if (H <= 0 || W <= 0) return;
+      let f = parseFloat(getComputedStyle(el).fontSize);
+      const min = 16;
+      while (f > min && (el.scrollHeight > H + 1 || el.scrollWidth > W + 1)) { f -= 0.5; el.style.fontSize = f + 'px'; }
+    });
+  }
+  scheduleFit() { cancelAnimationFrame(this._fitRaf); this._fitRaf = requestAnimationFrame(() => this.fitTiles()); }
+  constructor(props) {
+    super(props);
+    this.state = { page: props.page || 'home', introDone: false, openArch: null, openImps: {}, channel: 'All', tryTab: 'demo', openFaq: 0, flipped: -1 };
+    this.dead = false;
+    this.anim = !!props.animate;
+    this.shellRef = React.createRef();
+  }
+
+  stopAllVo() {
+    const a = this.voRef && this.voRef.current; if (a) a.pause();
+    document.querySelectorAll('iframe[title="Product video"]').forEach(f => { try { f.contentWindow.postMessage({ type: 'vq-stop' }, '*'); } catch (e) {} });
+  }
+  sendSound() {
+    document.querySelectorAll('iframe[title="Product video"]').forEach(f => { try { f.contentWindow.postMessage({ type: 'vq-sound', on: !this.state.soundOff }, '*'); } catch (e) {} });
+  }
+  syncVo() {
+    const a = this.voRef && this.voRef.current, v = this.mp4Ref && this.mp4Ref.current;
+    if (!a) return;
+    const SEG = { 2: [42.54, 62.3], 3: [62.8, 77.6] }[this.state.productTab ?? 0];
+    if (!SEG || !v || v.paused || this.state.soundOff) { a.pause(); return; }
+    const pos = SEG[0] + v.currentTime;
+    if (pos >= SEG[1]) { a.pause(); return; }
+    if (Math.abs(a.currentTime - pos) > 0.3) a.currentTime = pos;
+    if (a.paused) a.play().catch(() => {});
+  }
+  componentDidMount() {
+    this._onVidEnd = e => {
+      if (!e.data || e.data.type !== 'vq-playing') return;
+      const want = MODULES_SEQ_PATH(this.state.productTab ?? 0);
+      let path = ''; try { path = decodeURIComponent(e.data.path); } catch (x) { path = e.data.path; }
+      if (!want || path.indexOf(want) < 0) try { e.source.postMessage({ type: 'vq-stop' }, '*'); } catch (x) {}
+    };
+    window.addEventListener('message', this._onVidEnd);
+    this._kick = () => { if (!this.state.soundOff) { this.sendSound(); this.syncVo(); } };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(ev => window.addEventListener(ev, this._kick, true));
+    this.onFitResize = () => this.scheduleFit();
+    window.addEventListener('resize', this.onFitResize);
+    this.scheduleFit();
+    if (this.anim) this.setAnim(true);
+    else this.buildCircuits();
+  }
+
+  setAnim(on) {
+    this.anim = on;
+    const el = this.shellRef.current;
+    if (el) el.classList.toggle('vq-static', !on);
+    document.querySelectorAll('svg[data-circuit]').forEach(s => { s.innerHTML = ''; });
+    this.buildCircuits();
+    this.forceUpdate();
+  }
+
+  toggleAnim = () => this.setAnim(!this.anim);
+
+  componentDidUpdate(pp, ps) {
+    this.buildCircuits();
+    if (ps.page !== this.state.page) { this.scheduleFit(); clearTimeout(this._fitT); this._fitT = setTimeout(() => this.fitTiles(), 450); }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('message', this._onVidEnd);
+    ['pointerdown', 'keydown', 'touchstart'].forEach(ev => window.removeEventListener(ev, this._kick, true));
+    if (this.onMove) window.removeEventListener('mousemove', this.onMove);
+    if (this.onLeave) window.removeEventListener('mouseout', this.onLeave);
+    window.removeEventListener('resize', this.onFitResize); clearTimeout(this._fitT); this.dead = true; }
+
+  introOn() {
+    if (this.state.forceIntro) return true;
+    return (this.props.showIntro ?? true) && !this.state.introDone;
+  }
+
+  replayIntro = () => this.setState({ forceIntro: true, introDone: false });
+
+  finishIntro = (page) => {
+    if (!this.dead) this.setState({ introDone: true, forceIntro: false, page: typeof page === 'string' ? page : this.state.page });
+  };
+
+  /* ---------- circuit backgrounds ---------- */
+  buildCircuits() {
+    const root = this.rootEl || document;
+    document.querySelectorAll('svg[data-circuit]').forEach(svg => {
+      if (svg.childNodes.length) return;
+      const hero = svg.getAttribute('data-circuit') === 'hero';
+      this.circuit(svg, hero
+        ? { W: 1600, H: 900, step: 100, traces: 13, chips: 5, nodeR: 2.6, pulseR: 3.2, min: 5, max: 10 }
+        : { W: 400, H: 225, step: 36, traces: 6, chips: 1, nodeR: 1.8, pulseR: 2.2, min: 3, max: 6 });
+    });
+  }
+
+  circuit(svg, o) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const snap = (v, m) => Math.max(0, Math.min(m, Math.round(v / o.step) * o.step));
+    const opp = d => ({ L: 'R', R: 'L', U: 'D', D: 'U' })[d];
+    const gT = document.createElementNS(NS, 'g'), gC = document.createElementNS(NS, 'g'),
+          gN = document.createElementNS(NS, 'g'), gP = document.createElementNS(NS, 'g');
+    svg.append(gT, gC, gN, gP);
+
+    for (let i = 0; i < o.traces; i++) {
+      let x = snap(Math.random() * o.W, o.W), y = snap(Math.random() * o.H, o.H);
+      const pts = [[x, y]];
+      let last = null;
+      const segs = 3 + Math.floor(Math.random() * 4);
+      for (let s = 0; s < segs; s++) {
+        const dirs = ['L', 'R', 'U', 'D'].filter(d => d !== opp(last));
+        const dir = dirs[Math.floor(Math.random() * dirs.length)];
+        const len = o.step * (1 + Math.floor(Math.random() * 2));
+        if (dir === 'L') x = snap(x - len, o.W);
+        if (dir === 'R') x = snap(x + len, o.W);
+        if (dir === 'U') y = snap(y - len, o.H);
+        if (dir === 'D') y = snap(y + len, o.H);
+        pts.push([x, y]);
+        last = dir;
+      }
+      const d = pts.map((p, i2) => (i2 ? 'L' : 'M') + p[0] + ',' + p[1]).join(' ');
+      const path = document.createElementNS(NS, 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', 'vq-trace');
+      gT.appendChild(path);
+      pts.forEach(p => {
+        const c = document.createElementNS(NS, 'circle');
+        c.setAttribute('cx', p[0]); c.setAttribute('cy', p[1]); c.setAttribute('r', o.nodeR);
+        c.setAttribute('class', 'vq-node');
+        gN.appendChild(c);
+      });
+      if (this.anim) {
+        const pulse = document.createElementNS(NS, 'circle');
+        pulse.setAttribute('r', o.pulseR);
+        pulse.setAttribute('class', 'vq-pulse');
+        pulse.style.offsetPath = "path('" + d + "')";
+        pulse.style.animation = 'vqFlow ' + (o.min + Math.random() * (o.max - o.min)).toFixed(2) + 's linear infinite';
+        pulse.style.animationDelay = (-Math.random() * o.max).toFixed(2) + 's';
+        gP.appendChild(pulse);
+      }
+    }
+    for (let i = 0; i < o.chips; i++) {
+      const w = o.step * 2, h = o.step * 2;
+      const r = document.createElementNS(NS, 'rect');
+      r.setAttribute('x', snap(Math.random() * (o.W - w), o.W - w));
+      r.setAttribute('y', snap(Math.random() * (o.H - h), o.H - h));
+      r.setAttribute('width', w); r.setAttribute('height', h); r.setAttribute('rx', 3);
+      r.setAttribute('class', 'vq-chip');
+      gC.appendChild(r);
+    }
+  }
+
+  openArch = (id) => (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState(st => ({ openArch: st.openArch === id ? null : id })); };
+
+  openImp = (id) => (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState(st => ({ openImps: Object.assign({}, st.openImps, { [id]: !st.openImps[id] }) })); };
+
+  closeArch = () => { if (this.state.openArch) this.setState({ openArch: null }); };
+
+  setChannel = (c) => () => this.setState({ channel: c });
+
+  submitDemo = (e) => { e.preventDefault(); this.setState({ demoSent: true }); };
+
+  setTryTab = (t) => () => this.setState({ tryTab: t });
+
+  toggleFaq = (i) => () => this.setState(st => ({ openFaq: st.openFaq === i ? null : i }));
+
+  go = (page) => () => { this.setState({ page }); window.scrollTo(0, 0); };
+
+  renderVals() {
+    const TEAM = [
+      { initials: 'SK', img: 'assets/sara-blue.png', role: 'Founder & Head of AI', name: 'Sara Mani Kapoor', accent: true, bio: 'MPhil in Machine Learning & AI, Cambridge \u00b7 BA, Harvard. Co-author of the NeurIPS 2025 workshop paper on text-to-SQL over canonical models, and the architect of Vulqan\u2019s inference layer.' },
+      { initials: 'VK', img: 'assets/vikas-blue.png', role: 'Chairman & CEO', name: 'Vikas Kapoor', bio: 'CEO Mezocliq \u00b7 CEO iQor \u00b7 Co-founder Mitchell Madison. Architected the canonical data model over 10+ years and self-funded Vulqan to $1.7M ARR.' },
+      { initials: 'CM', img: 'assets/craig-blue-wide.png', role: 'Chief growth officer', name: 'Craig Muraskin', bio: "Deputy Chief Innovation Officer and Deputy Chief Transformation Officer, Deloitte · Senior Managing Director, US Strategy, Deloitte. 25 years building and taking new businesses to market inside a Big Four firm. Runs Vulqan's partner channels and enterprise go-to-market.", short: "Deputy Chief Innovation Officer and Deputy Chief Transformation Officer, Deloitte · Senior Managing Director, US Strategy, Deloitte. 25 years building and taking new businesses to market inside a Big Four firm." },
+      { initials: 'RK', img: 'assets/riya-blue.png', role: 'Marketing', name: 'Riya Mani Kapoor', accent: true, bio: 'MSc in Applied Linguistics & AI, Oxford \u00b7 BA, Harvard. Founder of mai.identity, an Oxford University venture building an AI marketing and brand engine.' },
+      { initials: 'SP', img: 'assets/sid-blue.png', role: 'Chief technology officer', name: 'Sid Probstein', bio: 'MIT \u00b7 co-author of SWRL, the W3C Semantic Web Rule Language. Enterprise search, data platforms and applied AI across CTO roles.' },
+      { initials: 'PA', img: 'assets/parikshit-blue.png', role: 'Head of delivery', name: 'Parikshit Arora', bio: 'SVP Tech Ops at iQor \u00b7 GE \u00b7 Genpact. 20+ years delivering complex enterprise implementations.' },
+      { initials: 'SP', role: 'Strategy advisor', name: 'Sesha Pratap', bio: 'Chief Product Officer, Mezocliq \u00b7 BA, Harvard. Enterprise strategy and go-to-market.' }
+    ];
+    const leadIdx = Math.min(this.state.leadIdx || 0, TEAM.length - 1);
+    const leadP = TEAM[leadIdx];
+    const page = this.state.page;
+    const CASES = [
+          {
+                "g": "sync_alt",
+                "t": "System Conversion",
+                "b": "Map fragmented undocumented old systems to an intelligent unified logical model. Migrate data with confidence—in weeks instead of months or years.",
+                "bg": "#0d1a34",
+                "back": "M16 22h52v14h-52Z M16 46h52v14h-52Z M16 70h52v14h-52Z M16 94h52v14h-52Z M16 118h52v14h-52Z M16 142h52v14h-52Z M236 34h50v122h-50Z",
+                "art": "M68 29 H140 V72 H236 M68 105 H164 V138 H236 M68 143 H116 V44 H236",
+                "dots": [
+                      [
+                            68,
+                            29
+                      ],
+                      [
+                            68,
+                            105
+                      ],
+                      [
+                            68,
+                            143
+                      ],
+                      [
+                            236,
+                            72
+                      ],
+                      [
+                            236,
+                            138
+                      ],
+                      [
+                            236,
+                            44
+                      ]
+                ]
+          },
+          {
+                "g": "merge_type",
+                "t": "Merger Integration",
+                "b": "Create one view across both companies, with a clear basis for what to keep, consolidate or retire.",
+                "bg": "#122040",
+                "back": "M14 18h40v22h-40Z M62 18h40v22h-40Z M14 48h40v22h-40Z M62 48h40v22h-40Z M14 118h40v22h-40Z M62 118h40v22h-40Z M14 148h40v22h-40Z M62 148h40v22h-40Z M244 74h44v42h-44Z",
+                "art": "M110 51 H158 V95 H244 M110 151 H158 V95",
+                "dots": [
+                      [
+                            158,
+                            95
+                      ],
+                      [
+                            110,
+                            51
+                      ],
+                      [
+                            110,
+                            151
+                      ]
+                ]
+          },
+          {
+                "g": "account_balance",
+                "t": "ERP Consolidation",
+                "b": "Unify ledgers, accounts, and journal entries across entities without months or years of data transformation and professional intervention.",
+                "bg": "#131f3c",
+                "back": "M24 26h252 M24 50h252 M24 74h252 M24 98h252 M24 122h252 M24 146h252 M92 14V178 M156 14V178 M220 14V178",
+                "art": "M24 158 H276 M24 168 H276 M220 30 V150",
+                "dots": [
+                      [
+                            220,
+                            30
+                      ],
+                      [
+                            220,
+                            150
+                      ]
+                ]
+          },
+          {
+                "g": "cleaning_services",
+                "t": "Data Warehouse Rationalization",
+                "b": "Define a unified logical data model across schemas so teams can query consistently without rebuilding the logic each time.",
+                "bg": "#0b1730",
+                "back": "M22 16h196v12h-196Z M22 38h150v12h-150Z M22 60h210v12h-210Z M22 82h124v12h-124Z M22 104h178v12h-178Z M22 126h232v12h-232Z M22 148h140v12h-140Z M22 170h188v12h-188Z",
+                "art": "M22 22 H218 M22 66 H146 M22 132 H254 M264 10 V180",
+                "dots": [
+                      [
+                            264,
+                            44
+                      ],
+                      [
+                            264,
+                            110
+                      ],
+                      [
+                            264,
+                            154
+                      ]
+                ]
+          },
+          {
+                "g": "travel_explore",
+                "t": "Continuous MDM",
+                "b": "",
+                "bg": "#16253f",
+                "back": "M20 24h54v38h-54Z M84 24h54v38h-54Z M148 24h54v38h-54Z M212 24h54v38h-54Z M20 76h54v38h-54Z M84 76h54v38h-54Z M148 76h54v38h-54Z M212 76h54v38h-54Z M20 128h54v38h-54Z M84 128h54v38h-54Z M148 128h54v38h-54Z M212 128h54v38h-54Z M20 43h54 M84 43h54 M148 43h54 M212 43h54",
+                "art": "M14 18 H144 V128 H14 Z M150 76 H286",
+                "dots": [
+                      [
+                            144,
+                            76
+                      ],
+                      [
+                            286,
+                            76
+                      ]
+                ]
+          },
+          {
+                "g": "fact_check",
+                "t": "Regulatory Reporting",
+                "b": "Keep definitions in the model and trace every reported figure back to its source variables.",
+                "bg": "#0b1730",
+                "back": "M60 14h140v150H60Z M74 26h140v150H74Z M88 38h140v150H88Z M104 64h108 M104 86h108 M104 108h72 M104 130h108 M104 152h90",
+                "art": "M232 132 a26 26 0 1 0 0.1 0 M220 146 l9 10 17 -22",
+                "dots": [
+                      [
+                            258,
+                            132
+                      ]
+                ]
+          },
+          {
+                "g": "description",
+                "t": "EUC Automation",
+                "b": "",
+                "bg": "#131f3c",
+                "back": "M52 10h150v170H52Z M70 32h112 M70 52h112 M70 72h78 M70 92h112 M70 112h112 M70 132h64 M70 152h112",
+                "art": "M196 92 a34 34 0 1 0 0.1 0 M222 120 L262 162 M170 78 h72 v28 h-72 Z",
+                "dots": [
+                      [
+                            262,
+                            162
+                      ]
+                ]
+          },
+          {
+                "g": "hub",
+                "t": "Payment Reconciliation",
+                "b": "Match statements to ledgers by meaning, so the resulting data has enterprise context, not just transaction information.",
+                "bg": "#0d1a34",
+                "back": "M20 20h76v16h-76Z M20 52h76v16h-76Z M20 84h76v16h-76Z M20 116h76v16h-76Z M20 148h76v16h-76Z M204 20h76v16h-76Z M204 52h76v16h-76Z M204 84h76v16h-76Z M204 116h76v16h-76Z M204 148h76v16h-76Z",
+                "art": "M96 28 H204 M96 60 H204 M96 124 H204 M96 156 H204 M96 92 H140 M160 92 H204",
+                "dots": [
+                      [
+                            150,
+                            92
+                      ]
+                ]
+          },
+          {
+                "g": "smart_toy",
+                "t": "AI Context",
+                "b": "Give AI defined variables and relationships instead of asking it to guess from column names.",
+                "bg": "#10224a",
+                "back": "M0 26 H1200 M0 58 H1200 M0 90 H1200 M0 122 H1200 M0 0 V160 M50 0 V160 M100 0 V160 M150 0 V160 M200 0 V160 M250 0 V160 M300 0 V160 M350 0 V160 M400 0 V160 M450 0 V160 M500 0 V160 M550 0 V160 M600 0 V160 M650 0 V160 M700 0 V160 M750 0 V160 M800 0 V160 M850 0 V160 M900 0 V160 M950 0 V160 M1000 0 V160 M1050 0 V160 M1100 0 V160 M1150 0 V160 M1200 0 V160",
+                "art": "M174 0 C174 70 600 40 600 104 M200 0 C200 70 600 40 600 104 M226 0 C226 70 600 40 600 104 M574 0 C574 70 600 40 600 104 M600 0 C600 70 600 40 600 104 M626 0 C626 70 600 40 600 104 M974 0 C974 70 600 40 600 104 M1000 0 C1000 70 600 40 600 104 M1026 0 C1026 70 600 40 600 104 M80 132 H1120 M80 146 H1120",
+                "dots": [
+                      [
+                            600,
+                            104
+                      ],
+                      [
+                            174,
+                            4
+                      ],
+                      [
+                            200,
+                            4
+                      ],
+                      [
+                            226,
+                            4
+                      ],
+                      [
+                            574,
+                            4
+                      ],
+                      [
+                            600,
+                            4
+                      ],
+                      [
+                            626,
+                            4
+                      ],
+                      [
+                            974,
+                            4
+                      ],
+                      [
+                            1000,
+                            4
+                      ],
+                      [
+                            1026,
+                            4
+                      ]
+                ]
+          }
+    ];
+    const BAND = b => ({
+      // exactly two passes of the list: the -50% loop is seamless and no word
+      // is ever on screen twice
+      items: [].concat(b.items, b.items),
+      style: {
+        position: 'absolute', left: 0, right: 0, top: 0, display: 'flex',
+        flexDirection: 'column', alignItems: 'center', whiteSpace: 'nowrap', willChange: 'transform',
+        animation: 'vqDrift' + b.dir + ' ' + b.dur + 's linear infinite'
+      },
+      textStyle: {
+        fontFamily: 'var(--vq-mono)', fontSize: '21px', fontWeight: 600,
+        letterSpacing: '.06em', color: '#16244a', padding: '86px 0'
+      }
+    });
+    const base = { background: 'transparent', backgroundColor: 'transparent', border: 'none', borderBottom: '1px solid transparent', color: '#95989c', fontSize: '17px', fontFamily: 'inherit', fontWeight: 500, padding: '6px 2px', borderRadius: 0, cursor: 'pointer', whiteSpace: 'nowrap', transition: 'color .15s linear, border-color .15s linear' };
+    base.textDecoration = 'none';
+    base.whiteSpace = 'nowrap';
+    const on = Object.assign({}, base, { color: '#fafbfc', fontWeight: 600, borderBottom: '1px solid #1784f1' });
+    const IMPACTS = [
+      { id: 'speed', value: 'Hours', label: 'Unification Speed', subX: '', subRest: '',
+        body: 'Connect a file, database or API. Within hours, DataMAIA proposes the objects, relationships, variables, cleansing rules and mappings it finds. Review the work yourself or invite an expert. A simple use case can be live in a day; even the most complex can be completed in a month.' },
+      { id: 'accuracy', value: '>80%', label: 'Transformation Accuracy', subX: '', subRest: '',
+        body: 'Give frontier AI unfamiliar enterprise data and it gets the meaning right only 10–20% of the time. Vulqan raises that to 70–80% before you review a single mapping. You see what the AI inferred, why it inferred it and where it is uncertain. After your input, accuracy rises to 80–90%.' },
+      { id: 'cost', value: 'Thousands', label: 'All-In Cost', subX: '', subRest: '',
+        body: 'Start with one use case for as little as $2,000 a month. Pricing scales with complexity and tops out at $20,000 a month for the largest enterprise deployments. No open-ended consulting engagement. No months of discovery before you see a result. Start small, prove the model and expand when it works.' }
+    ];
+
+    const ARCHES = [
+      { id: 'usecase', term: 'Use-case context', note: 'Not enterprise-wide', kicker: 'Use-case context', figure: 'Canonical model resolution', img: 'assets/usecase-model.png', fitImg: true, caption: 'Data MAIA',
+        title: 'Scope alone does not make enterprise meaning possible.',
+        body: 'All the companies that have tried to address this problem attack it at an enterprise level. This was the theory behind MDM, and it is the guiding spirit behind various context layers today. In our view this approach is dead on arrival. Meaning in enterprises varies enormously across functions and use cases. The same field can mean different things in finance, operations or compliance. Vulqan creates a logical model for the use case being addressed, using only the objects, relationships and variables that matter to that situation. This use case knowledge can be reused and extended to the enterprise, so that enterprise meaning is established bottom-up, not top-down.',
+        body2: 'Scope is what makes the work finish. A use case is about thirty days, because the model is not being invented; your sources are being mapped onto one that is already built and maintained. Land on one use case, expand across many, and every later one starts from a model the earlier ones have already strengthened.',
+        stats: [
+          { n: '~250', k: 'canonical objects' },
+          { n: '~100K', k: 'relationship permutations' },
+          { n: '~1M', k: 'variable variants' },
+          { n: '~30 days', k: 'per use case' }
+        ],
+        points: [
+          { k: 'Layer 01', h: 'The model is built before we arrive', b: 'One model of what enterprise data means, maintained independently of any customer, so it works on first contact rather than after a discovery phase.' },
+          { k: 'Layer 02', h: 'The rules library compounds', b: 'Every engagement writes its mapping rules back into the HEURO library. The next use case starts from that library rather than from nothing.' },
+          { k: 'Licensing', h: 'One license per use case, one model underneath', b: 'Each use case is a separate license on the same model — post-merger integration, ERP consolidation, reconciliation — not a separate modeling project.' },
+          { k: 'Where it lands', h: 'Project-led and recurring, both', b: 'Migrations, carve-outs and audit preparation are finite. Reconciliation, counterparty 360 and ongoing onboarding keep running on the same mappings.' }
+        ],
+        close: 'Ask any vendor to show you the model before they have seen your data.' },
+
+      { id: 'heuristics', term: 'Expert heuristics', note: 'Not more semantic training', kicker: 'Expert heuristics', figure: 'NeurIPS 2025 text-to-SQL paper (Cambridge)', img: 'assets/heuristics-talk.png', caption: 'Vulqan at NeurIPS, December 2025',
+        title: 'Volume does not teach a model what your business means.',
+        body: 'Enterprise context is not a big data problem; it is a sparse data problem. Meaning is rarely contained in a column name or even the metadata associated with it. This is why the many attempts to extract meaning from dictionaries, catalogs and queries have yielded so little after so much effort. Yet experts can infer meaning very quickly \u2014 from precedence, relationships and patterns. Vulqan has documented those heuristics and trained specialized agents to apply them. This approach is fundamentally different from every other of which we are aware, and is the core differentiator of our platform.',
+        body2: 'Vulqan makes a different bet. Domain heuristics — precedence rules, identifier resolution, reconciliations, the edge cases your experts carry in their heads — are encoded into the model and its rules library up front. Against the canonical model, mapping accuracy runs 59 to 78% rather than under 15%, peer-reviewed at NeurIPS 2025. Better models make that stronger, not obsolete.',
+        stats: [
+          { n: 'under 15%', k: 'frontier AI on raw schemas' },
+          { n: '59–78%', k: 'through the canonical model' },
+          { n: '25+', k: 'mapping agents' },
+          { n: '70–80%', k: 'of a use case, automated' }
+        ],
+        points: [
+          { k: 'Agent roster', h: 'Every mapping is proposed, scored, and reviewable', b: 'Schema inspection, identifier resolution, business rule, reconciliation, and review agents each propose candidates against the model with a confidence score attached.' },
+          { k: 'Sign-off', h: 'Your experts confirm the last 20 to 30%', b: 'The engine takes a use case 70 to 80% of the way by design. Your people review, revise and confirm the rest — nothing goes live without their sign-off.' },
+          { k: 'Lineage', h: 'Explicit, versioned, and inspectable', b: 'Every mapping carries lineage and an audit trail in the versioned rules register, so a figure in a regulatory report traces back to its source.' },
+          { k: 'Accumulation', h: 'Heuristics outlive the engagement', b: 'A 90-day ticket normalization done in a day; identifier resolution across billing, sales and warehouse — both written back to the register and reused on every later source.' }
+        ],
+        close: 'Better LLMs make Vulqan stronger, not obsolete — because the knowledge was never in the model weights.' },
+
+      { id: 'structured', term: 'Logical structure first', note: 'Unstructured data second', kicker: 'Logical structure first', figure: 'Variable mapping and transformation', img: 'assets/structured-model.png', fitImg: true, caption: 'Data MAIA',
+        title: 'Documents enrich meaning. They cannot establish it.',
+        body: 'We share the fascination with the vast troves of untapped unstructured enterprise data. But we firmly believe it will remain obscure till the right structured data foundation is in place. Documents become far more useful when AI already understands the customers, suppliers, products, contracts, invoices and accounts they describe. Vulqan first creates that logical structure from enterprise systems, then connects documents to the right entities and variables. Unstructured data adds context to a model instead of forcing AI to guess the model from the documents.',
+        body2: 'That order is also what makes the architecture safe. Read-only connectors read schema and metadata in place — no write path, no extract. The Vulqan layer runs inside your tenant on Snowflake, Databricks or Azure; self-hosted open-weight models run in your environment, and customer data never trains anything. Only mappings and metadata are stored, and nothing is copied out.',
+        stats: [
+          { n: 'Read-only', k: 'no write path, no extract' },
+          { n: 'In tenant', k: 'single tenant, your account' },
+          { n: 'SOC 2 Type 2', k: 'customer-managed keys' },
+          { n: 'Metadata only', k: 'mappings, never your records' }
+        ],
+        points: [
+          { k: 'Sources', h: 'Sits above the stack you already run', b: 'ERP, CRM, ledgers, warehouses and files, read in place. Vulqan runs above Snowflake, Databricks and Azure and replaces none of them.' },
+          { k: 'Coexistence', h: 'Not a warehouse, not ETL, not a catalog', b: 'It coexists with your catalog, MDM, warehouse and dbt rather than competing with them, and feeds your existing MDM mappings that already carry confidence scores.' },
+          { k: 'Outputs', h: 'Feeds BI, Cortex, Genie and your agents', b: 'The resolved layer is queryable by the tools already in place, and exports to Apache Ossie for anything that is not.' },
+          { k: 'When not to', h: 'One system, one schema, one team', b: 'If everyone already agrees on definitions there is no meaning gap to close, and no reason to pay to close one.' }
+        ],
+        close: 'Vulqan reads your data in place, stores mappings and metadata only, and copies nothing out of your environment.' }
+    ];
+    // the six platform modules, in the order the product's own tab strip lists them
+    const MODULES = [
+      { name: 'Overview', video: '', seq: ['Product Video - Overview.dc.html'], body: '' },
+      { name: 'DataMAIA', video: '', seq: ['Product Video - Data MAIA.dc.html'], body: 'Connect your data and let DataMAIA work out what it means. It proposes the objects, relationships, variables, lists, cleansing rules and mappings it finds, with a confidence score and an explanation for every decision. Accept, revise or reject its work.' },
+      { name: 'Logic Builder', video: '', seq: ['Product Video - Logic Builder.dc.html'], body: 'Turn the proposed model into a working Data Engine. Control its objects, relationships, variables, validations, transformations and mappings in one visual workspace. Start with what DataMAIA created and change as much or as little as you need.' },
+      { name: 'Quality Queue', video: '', seq: ['Product Video - Quality Queue.dc.html'], body: 'See every file, record and variable that needs attention. Quality Queue explains errors and warnings in context, lets you correct the affected data and reprocess it immediately. You can monitor one upload or an entire production pipeline from the same place.' },
+      { name: 'Data Hub', video: '', seq: ['Product Video - Data Hub.dc.html'], body: 'Explore the result as a graph or a familiar table. Search across unified objects, open any record for a 360-degree view and trace every value back to its source. Edit records, attach documents, run approvals and manage workflows without leaving the governed model.' },
+      { name: 'Delivery Station', video: '', seq: ['Product Video - Delivery Station.dc.html'], body: 'Put governed data to work. Build a query, choose a destination and send the result as a file, through an API or into Excel. Save the configuration for scheduled delivery and track what was sent, when and where.' },
+      { name: 'Ask MAIA', video: '', seq: ['Product Video - Ask MAIA.dc.html'], body: 'Ask questions in plain English and get answers in tables or charts. Ask MAIA to explain a mapping, trace an error or show how it reached an answer. Advanced users can inspect and edit the underlying SQL or Cypher; everyone else can stay in the conversation.' }
+    ];
+    const PRODUCT_VIDEO = 'https://www.dropbox.com/scl/fi/xud2i4du4pn41ebf07k3m/VULQAN-Product-Demo-720.mov?rlkey=mw6uv6qpes9xijbhf8u0frkrq&st=cfdbnss1&raw=1';
+    const hasPt = true;
+    const pt = Math.min(this.state.productTab ?? 0, MODULES.length - 1);
+    const POSTS = [
+      { id: 'paper1', date: 'Jul 2026', channel: 'Paper', title: 'Does text-to-SQL work as advertised?', href: '', img: 'assets/paper-text-to-sql.png', body: ['Frontier models asked to write SQL against a raw enterprise schema map correctly less than 15% of the time. The column names carry no meaning, so the model is guessing at intent from strings.', 'Put a canonical model between the question and the schema and the same task runs 59 to 78%. The knowledge was never in the weights \u2014 it was in the model of what the business means.'] },
+      { id: 'p1', date: 'Jan 20, 2024', channel: 'Substack', title: 'Are enterprise chatbots working?', href: 'https://www.vulqan.ai/our-perspective/are-enterprise-chatbots-working', img: 'assets/post-chatbots.png', body: ['An enterprise chatbot answers from whatever it can reach. When what it can reach is a warehouse of undefined columns, the answer is fluent and wrong \u2014 and nobody can tell which.', 'The fix is not a better prompt. It is giving the assistant defined variables and explicit relationships, so a question about revenue resolves against one definition of revenue.'] },
+      { id: 'p2', date: 'Jan 6, 2024', channel: 'LinkedIn', title: 'Is data mapping a solved problem?', href: 'https://www.vulqan.ai/our-perspective/is-data-mapping-and-translation-a-solved-problem', img: 'assets/post-mapping.png', body: ['Four generations have bet that meaning can be recovered from what a company already holds \u2014 consultants, catalogs, profiling, and now agents reading the same evidence faster.', 'Mapping is only solved once the target exists before the project starts. Build the canonical model first and mapping becomes a thirty-day exercise instead of an open-ended one.'] },
+      { id: 'p3', date: 'Dec 23, 2024', channel: 'Substack', title: 'Is data unification a process issue?', href: 'https://www.vulqan.ai/our-perspective/is-data-unification-a-process-problem', img: 'assets/post-quality-measures.png', body: ['Unification programmes are usually run as governance: committees, standards, and a schedule. The artefact they produce is agreement, not a model.', 'Treat it as an architecture problem instead. Encode the heuristics your experts already carry, resolve systems onto one logical layer, and the process follows.'] },
+      { id: 'p4', date: 'Dec 16, 2024', channel: 'X', title: 'Are data quality measures meaningful?', href: 'https://www.vulqan.ai/our-perspective/are-data-quality-measures-meaningful', img: 'assets/post-quality-quantity.png', body: ['Completeness and freshness scores measure the shape of a table, not whether the figures in it mean the same thing as the figures next to them.', 'Quality is only measurable against a definition. Measure at the feed, the record and the model, and an exception becomes something you can act on.'] },
+      { id: 'p5', date: 'Dec 9, 2024', channel: 'LinkedIn', title: 'Should data quality trump quantity?', href: 'https://www.vulqan.ai/our-perspective/should-data-quality-trump-quantity', img: 'assets/post-unification.png', body: ['More data has been the default answer for a decade. It raises coverage and leaves the meaning gap exactly where it was.', 'A smaller, defined estate outperforms a larger undefined one on every task that requires reasoning \u2014 which is now most of them.'] }
+    ];
+    const CHANNELS = ['All', 'LinkedIn', 'Substack', 'X', 'Papers', 'Press'];
+    const FAQS = [
+      { q: 'What problem does Vulqan solve?', a: 'Vulqan works out what data from different files and systems means, then unifies it in a logical model you can inspect and edit. Instead of beginning with months of manual modeling, you begin with an AI-generated answer and the evidence behind it.' },
+      { q: 'Where does our data go?', a: "Choose the deployment that fits your needs: Vulqan's cloud, your cloud account or on premises. Data is encrypted in transit and at rest. Vulqan is SOC 2 Type II and ISO 27001 compliant." },
+      { q: 'Which AI models run and where?', a: 'Vulqan uses a specially trained open-weight model for logical data modeling. For chat, you can use the model of your choice, inside or outside your deployment.' },
+      { q: 'How long does a use case take?', a: 'DataMAIA proposes a model within hours of connecting your sources. A simple use case can be ready in a day. A large, complex use case may take up to 30 days, depending mainly on how quickly your team reviews and approves the proposed model.' },
+      { q: 'We already have a warehouse, catalog and semantic layer. Do we need Vulqan?', a: 'Keep them. Those tools store, describe and serve logic your team has already defined. Vulqan addresses the step before that: inferring meaning and mappings where they are missing. It can then feed the tools you already use.' },
+      { q: 'Is this a semantic layer, an ontology or MDM under another name?', a: 'No. Those systems begin with definitions and mappings your team supplies. Vulqan proposes them. Its output can populate a semantic layer, ontology or MDM platform, or power a use case directly.' },
+      { q: 'What is different about Vulqan?', a: 'Vulqan trains AI on the heuristics experts use to understand unfamiliar data. More training data alone cannot supply context that was never recorded. Our agents reason from the structure, values and relationships in the data, then show you the evidence behind every decision.' },
+      { q: 'Do I need a data team to get started?', a: 'No. You can begin with a file and review the model DataMAIA proposes. Technical users can inspect mappings, transformations, SQL and Cypher; business users can work visually and in plain English. For a complex enterprise deployment, your experts approve the logic while Vulqan does the first pass.' }
+    ];
+    const chan = this.state.channel;
+    const chipBase = { background: 'transparent', borderWidth: '1px', borderStyle: 'solid', borderColor: '#1d2d5a', color: '#95989c', fontFamily: "'Roboto Mono',ui-monospace,monospace", fontSize: '11px', letterSpacing: '.1em', textTransform: 'uppercase', padding: '8px 14px', borderRadius: '100px', cursor: 'pointer', whiteSpace: 'nowrap', transition: 'border-color .15s linear, color .15s linear' };
+    const chipOn = Object.assign({}, chipBase, { borderColor: '#1784f1', color: '#fafbfc' });
+    const shown = POSTS.filter(p => chan === 'All' || p.channel === chan);
+    const op = POSTS.find(p => p.id === this.state.openPost);
+    const openId = this.state.openArch;
+    const openItem = ARCHES.find(a => a.id === openId);
+    const ctaBase = { display: 'flex', alignItems: 'center', gap: '7px', marginTop: 'auto', fontFamily: "'Roboto Mono',ui-monospace,monospace", fontSize: '11.5px', letterSpacing: '.14em', textTransform: 'uppercase', color: '#1784f1' };
+    const archBase = { width: '100%', height: 'clamp(220px,29vh,340px)', borderRadius: '18px', background: '#0e1730', border: '1px solid #1784f1', boxShadow: 'inset 0 1px 0 rgba(125,179,238,.22), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 0 60px rgba(23,132,241,.06), 0 14px 26px rgba(0,0,0,.62)', transition: 'opacity .25s linear, background-color .15s linear', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '30px 26px 22px', textAlign: 'center' };
+    return {
+      closeArch: this.closeArch,
+      submitDemo: this.submitDemo,
+      demoSent: !!this.state.demoSent,
+      tryTabs: ['Book a demo', 'FAQ'].map(l => ({
+        label: l, onClick: this.setTryTab(l === 'FAQ' ? 'faq' : 'demo'),
+        style: (this.state.tryTab === 'faq' ? 'FAQ' : 'Book a demo') === l ? chipOn : chipBase
+      })),
+      faqPanel: !!this.state.faqPanel,
+      faqClosed: !this.state.faqPanel,
+      toggleFaqPanel: () => this.setState(st => ({ faqPanel: !st.faqPanel })),
+      faqTabStyle: {
+        flex: '0 0 auto', cursor: 'pointer', font: 'inherit', fontFamily: 'var(--vq-mono)',
+        fontSize: 'clamp(9px,1.18vw,14px)', letterSpacing: '.05em', textTransform: 'uppercase',
+        padding: '14px 0', width: '100%', border: 'none',
+        borderBottom: '2px solid ' + (this.state.faqPanel ? '#1784f1' : 'transparent'),
+        backgroundColor: this.state.faqPanel ? '#16244a' : 'transparent',
+        color: this.state.faqPanel ? '#fafbfc' : '#95989c'
+      },
+      faqBtnStyle: { display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', fontFamily: 'var(--vq-mono)', fontSize: '14px', letterSpacing: '.06em', textTransform: 'uppercase', padding: '10px 14px 10px 18px', borderRadius: '100px', border: '1px solid ' + (this.state.faqPanel ? '#1784f1' : '#24365f'), background: this.state.faqPanel ? '#16244a' : '#101b34', color: this.state.faqPanel ? '#fafbfc' : '#c9ccd2', boxShadow: this.state.faqPanel ? '0 0 18px rgba(23,132,241,.25)' : 'none', transition: 'border-color .15s linear,color .15s linear' },
+      faqCaretStyle: { fontSize: '20px', color: '#1784f1', transition: 'transform .2s ease', transform: this.state.faqPanel ? 'rotate(180deg)' : 'none' },
+      faqListStyle: {
+        flex: 1, minHeight: 0, overflowY: 'auto',
+        padding: '10px clamp(20px,3vw,40px) 18px',
+        display: 'flex', flexDirection: 'column',
+        justifyContent: 'space-between'
+      },
+      faqs: FAQS.map((f, i) => ({
+        q: f.q, a: f.a, open: this.state.openFaq === i, onClick: this.toggleFaq(i),
+        wrapStyle: {
+          borderRadius: '10px',
+          background: this.state.openFaq === i ? '#16244a' : 'transparent',
+          borderBottom: i < FAQS.length - 1 && this.state.openFaq !== i ? '1px solid #24365f' : '1px solid transparent'
+        },
+        qStyle: {
+          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          gap: '20px', background: 'transparent', border: 'none', cursor: 'pointer',
+          padding: this.state.openFaq === i ? 'clamp(14px,1.6vw,20px) clamp(14px,1.6vw,22px) 12px' : 'clamp(14px,1.6vw,20px) clamp(14px,1.6vw,22px)', textAlign: 'left',
+          fontFamily: 'inherit', fontSize: 'clamp(19px,1.68vw,23px)', fontWeight: 600,
+          lineHeight: 1.3, color: '#fafbfc'
+        },
+        signStyle: {
+          flex: 'none', fontSize: '22px', lineHeight: 1, color: '#1784f1',
+          transition: 'transform .2s ease',
+          transform: this.state.openFaq === i ? 'rotate(45deg)' : 'none'
+        }
+      })),
+      channels: CHANNELS.map(c => ({ label: c, onClick: this.setChannel(c), style: c === chan ? chipOn : chipBase })),
+      entries: shown.map((p, i) => {
+        const lead = false;
+        return {
+          id: p.id, date: p.date, channel: p.channel, title: p.title, href: p.href,
+          onClick: () => this.setState({ openPost: p.id }),
+          hasImg: !!p.img, noImg: !p.img, img: p.img || '',
+          slotId: 'persp-' + p.id,
+          mark: ({ LinkedIn: 'in', Substack: 'S', X: '\u00d7', Papers: 'description', Press: 'receipt_long' })[p.channel] || '',
+          markClass: p.channel === 'Papers' || p.channel === 'Press' ? 'material-icons' : '',
+          markStyle: {
+            position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)',
+            fontFamily: p.channel === 'Papers' || p.channel === 'Press' ? "'Material Icons'" : "'Inter',system-ui,sans-serif",
+            fontFeatureSettings: "'liga'", whiteSpace: 'nowrap',
+            fontWeight: 700, letterSpacing: '-.02em',
+            fontSize: p.channel === 'Papers' || p.channel === 'Press' ? '26px' : (p.channel === 'X' ? '30px' : '24px'),
+            lineHeight: 1, color: '#3d5691', pointerEvents: 'none', userSelect: 'none'
+          },
+          slotHint: lead ? 'Lead image' : 'Thumbnail',
+          rowStyle: {
+            display: 'flex', flexDirection: 'column', minHeight: 0, overflow: 'hidden',
+            overflow: 'hidden',
+            background: '#101b34', borderWidth: '1px', borderStyle: 'solid',
+            borderColor: '#24365f', borderRadius: '6px',
+            color: 'inherit', textDecoration: 'none', textAlign: 'left',
+            font: 'inherit', padding: 0, cursor: 'pointer',
+            transition: 'background-color .15s linear, border-color .15s linear'
+          },
+          titleStyle: {
+            margin: 0, fontWeight: 600, color: '#fafbfc', letterSpacing: '-.01em',
+            lineHeight: 1.24, whiteSpace: 'nowrap',
+            overflow: 'hidden', textOverflow: 'ellipsis',
+            fontSize: 'min(24px, ' + (95 / (p.title.length * 0.58)).toFixed(2) + 'cqw)'
+          },
+          imgStyle: {
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: '50% 0%',
+            opacity: p.id === 'paper1' ? 0.42 : 1
+          },
+          thumbStyle: {
+            position: 'relative', borderTop: '1px solid #24365f', overflow: 'hidden',
+            flex: '1 1 auto', minHeight: 0
+          }
+        };
+      }),
+      postOpen: !!op,
+      postTitle: op ? op.title : '',
+      postTitleStyle: {
+        margin: 0, fontWeight: 600, lineHeight: 1.2, color: '#fafbfc', whiteSpace: 'nowrap',
+        overflow: 'hidden', textOverflow: 'ellipsis',
+        fontSize: op ? 'min(32px, ' + (95 / (op.title.length * 0.58)).toFixed(2) + 'cqw)' : '26px'
+      },
+      postDate: op ? op.date : '',
+      postChannel: op ? op.channel : '',
+      postBody: op ? (op.body || []) : [],
+      postHref: op ? op.href : '',
+      postSlotId: op ? 'persp-' + op.id : 'persp',
+      postHasImg: !!(op && op.img),
+      postNoImg: !(op && op.img),
+      postImg: (op && op.img) || '',
+      postCta: op ? (op.href ? 'Go to ' + op.channel : 'Read the paper') : '',
+      closePost: () => this.setState({ openPost: null }),
+      feedPath: (() => {
+        const i = ARCHES.findIndex(a => a.id === openId);
+        if (i < 0) return '';
+        const x = 200 + i * 400;
+        return 'M' + x + ' 0 V16 H600 V25';
+      })(),
+      pads: ARCHES.map((a, i) => {
+        const on = openId === a.id;
+        const x = 200 + i * 400;
+        return {
+          x, stub: 'M' + x + ' 8 V46', wire: on ? '#1784f1' : '#457bcc',
+          wireStyle: on
+            ? { strokeDasharray: '120 120', animation: 'vqRoute .5s ease-out forwards' }
+            : { opacity: 0.28 },
+          padStyle: on
+            ? { animation: 'vqPadOn 1.6s ease-in-out infinite' }
+            : { animation: 'vqPad 2.4s ease-in-out infinite', animationDelay: (i * 0.8) + 's', opacity: 0.5 }
+        };
+      }),
+      arches: ARCHES.map(a => ({
+        id: a.id, term: a.term, note: a.note,
+        noteStyle: {
+          marginTop: '8px', fontSize: 'clamp(22px,1.85vw,32px)', fontStyle: 'italic', fontWeight: 400,
+          lineHeight: 1.16, color: '#fafbfc', textWrap: 'balance',
+          opacity: 0, animation: 'vqSubIn .55s ease forwards',
+          animationDelay: (0.35 + ARCHES.findIndex(x => x.id === a.id) * 0.45).toFixed(2) + 's'
+        },
+        onClick: this.openArch(a.id),
+        cls: openId === a.id ? 'vq-arch vq-arch-on' : 'vq-arch',
+        cta: openId === a.id ? 'Close' : 'Read more',
+        ctaStyle: openId === a.id ? Object.assign({}, ctaBase, { color: '#7db3ee' }) : ctaBase,
+        caretStyle: { width: '12px', height: '8px', display: 'block', transition: 'transform .2s ease', transform: openId === a.id ? 'rotate(180deg)' : 'none' },
+        style: Object.assign({}, archBase, {
+          backgroundColor: openId === a.id ? '#152344' : '#0b1428',
+          transform: openId === a.id ? 'translateY(-4px)' : 'none',
+          boxShadow: openId === a.id
+            ? 'inset 0 1px 0 rgba(125,179,238,.3), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 0 60px rgba(23,132,241,.1), 0 22px 38px rgba(0,0,0,.7)'
+            : archBase.boxShadow,
+          opacity: openId && openId !== a.id ? 0.3 : 1
+        })
+      })),
+      impacts: IMPACTS.map((m, ix) => {
+        const on = !!this.state.openImps[m.id];
+        return {
+          id: m.id, value: m.value, label: m.label, subX: m.subX, subRest: m.subRest, body: m.body,
+          open: on, showDisc: ix < 2,
+          onClick: this.openImp(m.id),
+          subStyle: {
+            fontSize: 'clamp(20px,1.6vw,28px)', fontWeight: 500, fontStyle: 'italic', lineHeight: 1.16, letterSpacing: '-.015em', color: '#c9ccd2', whiteSpace: 'nowrap',
+            opacity: 0, animation: 'vqSubIn .55s ease forwards',
+            animationDelay: (0.35 + ix * 0.45).toFixed(2) + 's'
+          },
+          cta: on ? 'Close' : 'Read more',
+          ctaStyle: Object.assign({}, ctaBase, { marginTop: '0', whiteSpace: 'nowrap', position: 'absolute', left: '50%', bottom: '16px', transform: 'translateX(-50%)' }, on ? { color: '#7db3ee' } : {}),
+          caretStyle: { width: '8px', height: '12px', display: 'block', transition: 'transform .2s ease', transform: on ? 'rotate(180deg)' : 'none' },
+          style: Object.assign({}, archBase, {
+            position: 'relative',
+            height: 'clamp(150px,19vh,220px)',
+            minHeight: 0,
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center', textAlign: 'center',
+            paddingLeft: '16px', paddingRight: '16px', paddingBottom: '34px',
+            backgroundColor: on ? '#152344' : '#0b1428',
+            boxShadow: on
+              ? 'inset 0 1px 0 rgba(125,179,238,.3), inset 0 -1px 0 rgba(0,0,0,.5), inset 0 0 60px rgba(23,132,241,.1), 0 22px 38px rgba(0,0,0,.7)'
+              : archBase.boxShadow
+          })
+        };
+      }),
+      hasOpen: !!openItem,
+      openKicker: openItem ? openItem.kicker : '',
+      openTitle: openItem ? openItem.title : '',
+      openBody: openItem ? openItem.body : '',
+      openBody2: openItem ? openItem.body2 : '',
+      openStats: openItem ? openItem.stats : [],
+      openPoints: openItem ? openItem.points : [],
+      openClose: openItem ? openItem.close : '',
+      openSlotId: openItem ? 'approach-' + openItem.id : 'approach-slot',
+      openSlotHint: openItem ? openItem.figure : 'Figure',
+      openImg: openItem && openItem.img ? openItem.img : '',
+      openCaption: openItem && openItem.caption ? openItem.caption : '',
+      openHasImg: !!(openItem && openItem.img),
+      openHasCaption: !!(openItem && openItem.caption),
+      openImgStyle: Object.assign({ position: 'absolute', inset: 0, width: '100%', height: '100%' },
+        openItem && openItem.fitImg
+          ? { objectFit: 'contain', background: '#0b1428' }
+          : { objectFit: 'cover', opacity: .85, filter: 'saturate(.8) contrast(.98)' }),
+      openNoImg: !(openItem && openItem.img),
+      introOn: this.introOn(),
+      introOff: !this.introOn(),
+      showControls: page === 'home' && !this.introOn(),
+      replayIntro: this.replayIntro,
+      finishIntro: this.finishIntro,
+      shellRef: this.shellRef,
+      toggleAnim: this.toggleAnim,
+      animOn: this.anim,
+      animOff: !this.anim,
+      navItems: NAV.map(([id, label, href]) => ({ id, label, href, style: page === id ? on : base })),
+      isHome: page === 'home',
+      isApproach: page === 'approach',
+      isPerspective: page === 'perspective',
+      isProduct: page === 'product',
+      isUsecases: page === 'usecases',
+      isImpact: page === 'impact',
+      metrics: [
+        { value: '1', label: 'canonical model across every connected source' },
+        { value: '90%', label: 'less time spent arguing about what a field means' },
+        { value: '0', label: 'writes to your systems — read-only by design' },
+        { value: '4x', label: 'more questions answered without an analyst' }
+      ].map((m, i) => ({ ...m, num: String(i + 1).padStart(2, '0') })),
+      shifts: [
+        { before: 'Every question starts with a data pull request', after: 'Every question starts with an answer' },
+        { before: 'Meaning lives in the heads of six people', after: 'Meaning lives in the model, and it is auditable' },
+        { before: 'AI guesses at schemas it was never taught', after: 'AI reasons over data it actually understands' }
+      ],
+      isPeople: page === 'people',
+      isTryit: page === 'tryit',
+      showFooter: true,
+      posts: [
+        { no: 'Blog post 01', title: 'Without logical intelligence, enterprise AI will struggle' },
+        { no: 'Blog post 02', title: 'New buzzwords, same broken promise' },
+        { no: 'Blog post 03', title: "Why AI can't reason over data it doesn't understand" },
+        { no: 'Blog post 04', title: 'The rosetta stone enterprise data never had' },
+        { no: 'Blog post 05', title: 'What a canonical model actually is' },
+        { no: 'Blog post 06', title: 'Read-only, by design: how Vulqan handles your data' }
+      ],
+      modules: MODULES.map((m, i) => ({
+        name: m.name,
+        pick: () => { if (i === (this.state.productTab ?? 0)) return; this.stopAllVo(); this.setState({ productTab: i, seqIdx: 0, faqPanel: false, readMore: false }); },
+        wrapStyle: { display: 'flex', alignItems: 'center', flex: i === MODULES.length - 1 ? '0 0 auto' : '1 1 auto', minWidth: 'max-content' },
+        sepStyle: {
+          flex: i === MODULES.length - 1 ? '0 0 0' : '1 1 auto', textAlign: 'center', color: '#3b4c78', fontSize: 'clamp(9px,1.18vw,14px)',
+          padding: '0 1px', overflow: 'hidden', display: i === MODULES.length - 1 ? 'none' : 'block'
+        },
+        tabStyle: {
+          flex: '0 0 auto', whiteSpace: 'nowrap', cursor: 'pointer',
+          font: 'inherit', fontFamily: 'var(--vq-mono)', fontSize: 'clamp(7px,.95vw,14px)',
+          letterSpacing: '.04em', textTransform: 'uppercase',
+          padding: '14px clamp(3px,.5vw,12px)', border: 'none',
+          borderBottom: '2px solid ' + (i === pt && !this.state.faqPanel ? '#1784f1' : 'transparent'),
+          borderRadius: '6px 6px 0 0',
+          backgroundColor: i === pt && !this.state.faqPanel ? '#1b2949' : 'transparent',
+          color: i === pt && !this.state.faqPanel ? '#fafbfc' : '#95989c',
+          transition: 'background-color .15s linear,color .15s linear'
+        }
+      })),
+      activeName: hasPt ? MODULES[pt].name : '',
+      activeBody: hasPt ? MODULES[pt].body : '',
+      hasActive: hasPt,
+      readMoreOpen: hasPt && !!this.state.readMore,
+      toggleReadMore: () => this.setState(st => ({ readMore: !st.readMore })),
+      readMoreIconStyle: { width: '16px', height: '11px', display: 'block', transition: 'transform .2s ease', transform: this.state.readMore ? 'rotate(180deg)' : 'none' },
+      readMoreLabel: this.state.readMore ? 'Close' : 'Read more',
+      readMoreCtaStyle: { flex: '0 0 auto', alignSelf: 'flex-end', marginRight: 'clamp(2px,.4vw,8px)', display: 'flex', alignItems: 'center', gap: '7px', padding: 0, background: 'none', border: 'none', cursor: 'pointer', fontFamily: "'Roboto Mono',ui-monospace,monospace", fontSize: '11.5px', letterSpacing: '.14em', textTransform: 'uppercase', color: this.state.readMore ? '#7db3ee' : '#1784f1' },
+      productGridStyle: { flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: 'minmax(0,1fr)', gap: 0, border: '1px solid #1d2d5a', borderTop: 'none', borderRadius: '0 0 5px 5px', overflow: 'hidden', background: '#0e1730' },
+      activeLabel: 'Demo',
+      videoSrc: MODULES[pt].video,
+      hasMp4: !!MODULES[pt].video,
+      mp4Ref: this.mp4Ref || (this.mp4Ref = React.createRef()),
+      voRef: this.voRef || (this.voRef = React.createRef()),
+      soundIcon: this.state.soundOff ? 'volume_off' : 'volume_up',
+      soundLabel: this.state.soundOff ? 'Sound off' : 'Sound on',
+      soundTitle: this.state.soundOff ? 'Turn voiceover on' : 'Turn voiceover off',
+      toggleSound: () => {
+        const off = !this.state.soundOff;
+        this.setState({ soundOff: off }, () => { this.sendSound(); this.syncVo(); });
+      },
+      onPlayerLoad: () => this.sendSound(),
+      onMp4Time: () => this.syncVo(),
+      onMp4Pause: () => { const a = this.voRef && this.voRef.current; if (a) a.pause(); },
+      hasPlayer: !!MODULES[pt].seq,
+      playerKey: 'vq-player-' + pt,
+      playerSrc: MODULES[pt].seq ? encodeURI(MODULES[pt].seq[(this.state.seqIdx || 0) % MODULES[pt].seq.length]) + '?embed=1' : '',
+      hasVideo: !!(MODULES[pt].video || MODULES[pt].seq),
+      noVideo: !(MODULES[pt].video || MODULES[pt].seq),
+      chatText: this.state.chatText || '',
+      chatSent: !!this.state.chatSent,
+      onChatText: (e) => this.setState({ chatText: e.target.value, chatSent: false }),
+      onChatKey: (e) => { if (e.key === 'Enter' && (this.state.chatText || '').trim()) this.setState({ chatText: '', chatSent: true }); },
+      sendChat: () => { if ((this.state.chatText || '').trim()) this.setState({ chatText: '', chatSent: true }); },
+      chapters: [
+        'Master logical data management',
+        'Connect your sources',
+        'Choose your experience',
+        'Logical intelligence layer',
+        'Ask MAIA'
+      ],
+      usecases: CASES.filter(c => c.t !== 'AI Context').concat([0].map(k => ({
+        g: '', t: '…', b: '', bg: k % 2 ? '#111d38' : '#0e1730', art: '', back: '', dots: []
+      }))).concat(CASES.filter(c => c.t === 'AI Context')).map((c, i, all) => ({
+        // tiles 1-3 are the big row: title broken onto two lines at the most balanced space
+        title: (() => {
+          if (c.t === 'AI Context') return 'Logical Intelligence Foundation (LIF)';
+          if (i > 2 || !c.t.includes(' ')) return c.t;
+          const w = c.t.split(' ');
+          let best = 1, diff = 1e9;
+          for (let k = 1; k < w.length; k++) {
+            const d = Math.abs(w.slice(0, k).join(' ').length - w.slice(k).join(' ').length);
+            if (d < diff) { diff = d; best = k; }
+          }
+          return w.slice(0, best).join(' ') + '\n' + w.slice(best).join(' ');
+        })(),
+        sub: c.t === 'AI Context' ? 'aka AI context, ontology, semantic layer' : '',
+        hasSub: c.t === 'AI Context',
+        body: c.b, glyph: c.g, num: c.t === 'AI Context' ? '' : String(i + 1).padStart(2, '0'),
+        // the motif behind each tile is drawn from what the tile is about
+        etch: c.art,
+        back2: c.back,
+        nodes: c.dots.map(d => ({ x: d[0], y: d[1] })),
+        cls: this.state.flipped === i ? 'vq-tile on' : 'vq-tile',
+        // the entrance is keyed to the scanline: a tile lights as the line reaches its column
+        vb: c.t === 'AI Context' ? '0 0 1200 160' : '0 0 300 190',
+        svgStyle: c.t === 'AI Context' ? { opacity: 0.55 } : {},
+        style: {
+          position: 'relative', zIndex: 1,
+          gridRow: c.t === 'AI Context' ? '4' : String(Math.floor(i / 3) + 1),
+          animationDelay: (c.t === 'AI Context' ? 2.9 : 0.2 + i * 0.22).toFixed(2) + 's',
+          height: i < 3 ? 'clamp(170px,21vh,250px)' : c.t === 'AI Context' ? 'clamp(120px,14vh,170px)' : 'clamp(92px,10.5vh,128px)',
+          gridColumn: c.t === 'AI Context' ? '1 / -1' : String((i % 3) + 1)
+        },
+        // the rotation is driven inline, not by a descendant class rule
+        innerStyle: { transform: this.state.flipped === i ? 'rotateY(180deg)' : 'rotateY(0deg)' },
+        onClick: () => this.setState(st => ({ flipped: st.flipped === i ? -1 : i })),
+        titleStyle: {
+          position: 'relative', fontWeight: 600, lineHeight: 1.18, color: '#fafbfc',
+          letterSpacing: '-.012em', textAlign: 'center',
+          whiteSpace: (i < 3 || c.t === 'AI Context') ? 'pre-line' : 'nowrap',
+          fontSize: (i < 3 || c.t === 'AI Context')
+            ? 'clamp(26px, 2.4vw, 44px)'
+            : 'min(clamp(22px, 7cqw, 36px), ' + (170 / Math.max(1, c.t.length)).toFixed(2) + 'cqw)'
+        },
+        front: {
+          containerType: 'inline-size',
+          alignItems: 'center', justifyContent: 'center', padding: '14px 12px',
+          background: c.bg
+        },
+        bodyStyle: {
+          fontSize: 'clamp(19px, 5.6cqw, 32px)',
+          lineHeight: 1.3, color: '#c9ccd2', textWrap: 'pretty'
+        },
+        back: {
+          containerType: 'inline-size',
+          alignItems: 'center', justifyContent: 'center', padding: '10px 14px',
+          background: '#0b1428'
+        }
+      })),
+      // tiles 1-9 each feed the AI Context band: one line per tile runs behind the
+      // tiles (so it only shows in the gutters) and lands on an arrowhead at the band
+      ucFeeds: [0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => {
+        const r = Math.floor(i / 3), c = i % 3, off = [-26, 0, 26][r];
+        return {
+          style: { gridRow: (r + 1) + ' / 5', gridColumn: String(c + 1), position: 'relative', zIndex: 0, pointerEvents: 'none', animation: 'vqFadeIn .6s ease both', animationDelay: (2.2 + i * 0.05).toFixed(2) + 's' },
+          lineStyle: {
+            position: 'absolute', top: 0, bottom: 0, left: 'calc(50% + ' + off + 'px)', width: '2px', marginLeft: '-1px',
+            background: 'repeating-linear-gradient(to bottom, rgba(23,132,241,.9) 0 10px, rgba(23,132,241,.18) 10px 30px)',
+            animation: 'vqDrop 1.1s linear infinite', animationDelay: (-r * 0.35).toFixed(2) + 's'
+          }
+        };
+      }),
+      ucHeads: [0, 1, 2].map(c => ({
+        style: { gridRow: '4', gridColumn: String(c + 1), alignSelf: 'start', position: 'relative', zIndex: 2, height: 0, pointerEvents: 'none', animation: 'vqFadeIn .5s ease both', animationDelay: '2.6s' },
+        heads: [-26, 0, 26].map(off => ({ style: {
+          position: 'absolute', left: 'calc(50% + ' + off + 'px)', top: '-11px', width: 0, height: 0, marginLeft: '-6px',
+          borderLeft: '6px solid transparent', borderRight: '6px solid transparent', borderTop: '9px solid #1784f1'
+        } }))
+      })),
+      // four passes of the six places: translateX(-50%) loops on two identical
+      // halves, and each half must be wider than the viewport or a gap appears
+      locations: (() => {
+        const L = ['New York','Los Angeles','London','Cambridge','Oxford','Harvard','MIT','Princeton','Columbia'];
+        return [...L, ...L, ...L];
+      })(),
+      // five slow counter-drifting bands of place names, spanning the full height
+      // so they read as watermarks behind the cards rather than two isolated strips
+      bandsLeft: [
+        { top: 0, dur: 96, dir: 'A', tint: '#1d2d5a', items: ['New York', 'London', 'Los Angeles', 'New Delhi'] }
+      ].map(BAND),
+      schoolMarks: (() => {
+        const S = ['Harvard', 'Cambridge', 'Oxford', 'MIT', 'Princeton', 'Columbia'];
+        return [].concat(S, S, S, S).map((n, i) => ({ name: n, slotId: 'school-' + n.toLowerCase().replace(/[^a-z]+/g, '-') + '-' + i }));
+      })(),
+      bandsRight: [
+        { top: 0, dur: 108, dir: 'B', tint: '#1d2d5a', items: ['Harvard', 'Cambridge', 'Oxford', 'MIT', 'Princeton', 'Columbia'] }
+      ].map(BAND),
+      _unusedBands: [].map(b => ({
+        items: [].concat(b.items, b.items, b.items, b.items, b.items, b.items, b.items, b.items, b.items, b.items, b.items, b.items),
+        style: {
+          position: 'absolute', top: b.top, left: 0, width: '200%', display: 'flex',
+          whiteSpace: 'nowrap', willChange: 'transform',
+          animation: `vqDrift${b.dir} ${b.dur}s linear infinite`
+        },
+        textStyle: {
+          fontFamily: 'var(--vq-mono)', fontSize: '17px', fontWeight: 600,
+          letterSpacing: '.06em', color: b.tint, padding: '0 26px'
+        }
+      })),
+      lead: leadP,
+      leadHasImg: !!leadP.img,
+      leadNoImg: !leadP.img,
+      leadSrc: leadP.img || '',
+      leadSlotId: 'vq-lead-' + leadP.initials.toLowerCase(),
+      leadSlotLabel: leadP.name.split(' ')[0] + ' portrait',
+      team: TEAM.map((p, i) => ({ p, i })).filter(o => o.i !== leadIdx).map(({ p, i }) => ({
+        initials: p.initials, role: p.role, name: p.name, bio: p.short || p.bio,
+        hasImg: false, src: '',
+        hasSlot: false, plain: true,
+        slotId: 'vq-portrait-' + p.initials.toLowerCase(),
+        slotLabel: p.name.split(' ')[0],
+        onClick: () => { this.setState({ leadIdx: i }); },
+        cardStyle: {
+          display: 'block', width: '100%', textAlign: 'left', font: 'inherit', padding: 0, cursor: 'pointer',
+          background: '#0e1730', borderRadius: '5px', overflow: 'hidden',
+          border: '1px solid ' + (p.accent ? '#457bcc' : '#1d2d5a'),
+          transition: 'border-color .15s linear'
+        }
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

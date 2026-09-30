@@ -1,0 +1,107 @@
+/* Layer 2 — the --mz-* token layer, base block.
+   The shipped layer is 264 custom properties, 247 declared on `html`, injected into
+   document.head at boot as a lit `css` result (themes-density-css.js) rather than linked.
+   This file carries every base value recoverable from the shipped design-system export.
+   A component reads ONLY this layer — never a $variable, never a raw hex. */
+:root {
+  /* ---- accent layer -------------------------------------------------------
+     14 values: 12 accent slots (only 6 distinct colours — bgN and bgN+6 are
+     byte-identical) plus the two chromes. This is the only place a brand colour
+     is written down; themes assign references, not hexes. */
+  --mz-theme-light: #ffffff;
+  --mz-theme-dark: #232f34;
+  --mz-theme-bg1: #167d7d;   /* teal   — occupied by theme='dark', there is no bg1 */
+  --mz-theme-bg2: #ab750b;   /* amber  · dark chrome */
+  --mz-theme-bg3: #153a89;   /* blue   · dark chrome */
+  --mz-theme-bg4: #0e5f4c;   /* green  · dark chrome */
+  --mz-theme-bg5: #7c0a02;   /* red    · dark chrome */
+  --mz-theme-bg6: #4b1185;   /* purple · dark chrome */
+  --mz-theme-bg7: #167d7d;   /* teal   · light chrome */
+  --mz-theme-bg8: #ab750b;   /* amber  · light chrome */
+  --mz-theme-bg9: #153a89;   /* blue   · light chrome — the shipped default */
+  --mz-theme-bg10: #0e5f4c;  /* green  · light chrome */
+  --mz-theme-bg11: #7c0a02;  /* red    · light chrome */
+  --mz-theme-bg12: #4b1185;  /* purple · light chrome */
+
+  /* ---- theme surface, base declarations -----------------------------------
+     24 of the 38 surface tokens have a base value. The other 14 are listed at
+     the bottom of this file and exist only inside a theme block. */
+  --mz-side-nav-bg: #fafbfc;
+  --mz-workbar-bg: #fafbfc;
+  --mz-header-bg: var(--mz-theme-bg12);
+  --mz-vz-tab-bg: #edeef0;
+  --mz-vz-tab-selected-bg: #1784f1;
+  --mz-vz-toolbar-bg: #f6f7f9;
+  --mz-editzone-section-head-bg: #f6f7f9;
+  --mz-editzone-shadow: rgba(149, 152, 156, 0.3);
+  --mz-myzone-shadow: rgba(149, 152, 156, 0.3);
+  --mz-white-darkblack2-color: #ffffff;
+  --mz-gray4-gray1-color: #e2e2e2;
+  --mz-dflt-selected-activity-clr: #1784f1;
+  --mz-widget-active-label-color: #1784f1;
+  --mz-search-bg-color: #ffffff;
+  --mz-rvp-global-blue-50: #eef3ff;
+  --mz-sm-white-color: #ffffff;
+  --mz-sm-gray3-color: #95989c;
+  --mz-sm-global_Blue3-color: #1972dd;
+  --mz-sm-global_Blue4-color: #1784f1;
+  --mz-sm-global_bg-color: #797fbd;
+  --mz-inputs-base-color: 0, 0, 0;
+  /* WARNING: the base declares this as an rgb TRIPLE so it can be wrapped in rgba(),
+     but every theme reassigns it to a HEX (var(--mz-theme-bgN)). Any
+     rgba(var(--mz-inputs-base-color), a) therefore becomes invalid the moment a theme
+     is applied, and the whole declaration silently drops. The base's own
+     --mz-inputs-hover-boder-color does exactly that, which is why every theme has to
+     override it with a flat colour. Do not build a new alpha on this token: use
+     --mz-sm-gray5-color (#cbd1d8, DOOR3 gray-LT-textfield-outline) for a field outline
+     and --mz-sm-gray2-color for an unchecked control ring — which is what the
+     components in this system do. */
+  --mz-inputs-hover-boder-color: rgba(var(--mz-inputs-base-color), 1);
+  --mz-inputs-text-focus: #1784f1;
+  --mz-inputs-errored: #df1b1b;
+
+  /* ---- shared, off the theme surface -------------------------------------- */
+  --mz-work-action-text-color: #585e6c; /* 6 of 12 themes override it; the rest inherit this */
+  --mz-darkBlack1-lightGray-color: #27292b; /* pair-named: darkBlack1 / lightGray */
+
+  /* rvp-* — the later visual pass, effectively a second palette.
+     Values recovered from the fallbacks written at their call sites. */
+  --mz-rvp-global-gray-200: #ecedef; /* mz-button [disabled] fill */
+  --mz-rvp-global-gray-400: #d4d6da; /* every 1px border in the utility layer */
+  --mz-rvp-global-gray-700: #585e6c; /* themed search field background */
+
+  /* ---- source-named colours lifted from the SCSS palette ------------------
+     The `sm-` family names its source $variable, not its role. Reuse with care:
+     the name tells you nothing about where it belongs. */
+  --mz-sm-darkBlue-color: #1d2d5a;
+  --mz-sm-darkBlack1-color: #27292b;
+  --mz-sm-darkBlack2-color: #222324;
+  --mz-sm-darkBlack5-color: #2c3034;
+  --mz-sm-gray0-color: #7d7f80;
+  --mz-sm-gray1-color: #3a3b3c;
+  --mz-sm-gray2-color: #585a5c;
+  --mz-sm-gray4-color: #e2e2e2;
+  --mz-sm-gray5-color: #cbd1d8;
+  --mz-sm-gray6-color: #edeef0;
+  --mz-sm-gray8-color: #f6f7f9;
+  --mz-sm-lightGray-color: #fafbfc;
+  --mz-sm-global_Blue1-color: #e3f2ff;
+  --mz-sm-global_Blue2-color: #457bcc;
+  --mz-sm-global_Red3-color: #df1b1b;
+  --mz-sm-global_Red6-color: #b00020;
+  --mz-sm-global_Green-color: #2fa26c;
+  --mz-sm-global_Green2-color: #2b9223;
+  --mz-sm-orange-color: #ffa500;
+}
+
+/* ---- declared by every theme and by no base block -------------------------
+   --mz-primary                     --mz-secondary
+   --mz-primary-variant             --mz-secondary-variant
+   --mz-primary-variant-bg          --mz-darkBlack1-white-color
+   --mz-primary-variant-light-bg    --mz-rvp-global-gray-shade
+   --mz-primary-variant-light-color --mz-rvp-global-table-selected
+   --mz-primary-variant-shadow      --mz-rvp-light-border-gray
+   --mz-rvp-light-chip-green        --mz-rvp-light-table-header
+
+   With no `theme` attribute on <html>, mz-button's `background-color: var(--mz-secondary)`
+   resolves to nothing. Always boot with a theme. The shipped default is bg9. */

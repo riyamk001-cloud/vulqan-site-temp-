@@ -1,0 +1,27 @@
+/* Zone geometry.
+   INTENTIONAL ADDITION. In the codebase these are literals in header.scss, suite.scss,
+   realms.scss, base-realms.scss and viewzone.scss — there are no tokens for them. They
+   are named here so a recreation can be built from the real numbers rather than guesses.
+   Values are verbatim; the names are new. */
+:root {
+  --mz-suite-head-height: 4.5rem;
+  /* yes, 4.4 against a 4.5rem head — a 1px overlap on every screen */
+  --mz-suite-body-height: calc(100vh - 4.4rem); /* @kind spacing */
+  --mz-realm-tabs-height: 4.5rem;
+  --mz-myzone-rail-collapsed: 20px;
+  --mz-myzone-rail-expanded: 24.5rem;
+  --mz-editzone-drawer-expanded: 34rem;
+  --mz-vz-toolbar-width: 6rem;
+  --mz-metrics-bar-height: 4.8rem;
+  --mz-pinned-offset: 42.8rem; /* both left- and right-pinned set `left` to this */
+
+  /* shape + elevation, lifted from the shipped rules that carry them */
+  --mz-radius-button: 4px;   /* mz-button :host */
+  --mz-radius-card: 5px;     /* .card */
+  --mz-radius-tab: 4px 4px 0 0;
+  --mz-radius-pill: 20px;    /* .dialog-close-btn-hldr */
+  --mz-border-1: 1px solid var(--mz-rvp-global-gray-400, #d4d6da);
+  --mz-shadow-card: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12),
+    0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  --mz-transition-card: background-color 0.5s ease; /* @kind other */
+}

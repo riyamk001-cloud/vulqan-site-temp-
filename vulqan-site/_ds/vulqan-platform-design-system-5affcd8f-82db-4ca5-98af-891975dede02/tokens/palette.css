@@ -1,0 +1,71 @@
+/* Layer 1 — the SCSS palette.
+   58 $variables in wc-foundations/.../styles/internals/_variables.scss. In the real build
+   these are SCSS, interpolated into the token layer at compile time and gone by runtime.
+   They are surfaced here as `--mz-scss-*` so consumers outside the build can reach them.
+   INTENTIONAL ADDITION — this prefix does not exist in the codebase. Never read one of
+   these from a component; read the `--mz-*` token that carries it. */
+:root {
+  /* chrome + neutrals */
+  --mz-scss-darkBlue: #1d2d5a;       /* DOOR3 navy-LTheader */
+  --mz-scss-darkBlack1: #27292b;     /* DOOR3 black-DTmain */
+  --mz-scss-darkBlack2: #222324;     /* DOOR3 dark-grey */
+  --mz-scss-darkBlack3: rgba(39, 41, 43, 0.6); /* DOOR3 black-inactive */
+  --mz-scss-darkBlack5: #2c3034;     /* DOOR3 black-openedtabs */
+  --mz-scss-darkBlack9: #131313;
+  --mz-scss-blackShade1: rgba(0, 0, 0, 0.075);
+  --mz-scss-blackShade2: rgba(0, 0, 0, 0.3);
+  --mz-scss-blackShade3: rgba(0, 0, 0, 0.12);
+  --mz-scss-gray0: #7d7f80;
+  --mz-scss-gray1: #3a3b3c;          /* DOOR3 gray-DToutline */
+  --mz-scss-gray2: #585a5c;          /* DOOR3 gray-DT-textfield-outline */
+  --mz-scss-gray3: #95989c;          /* DOOR3 gray-overline */
+  --mz-scss-gray4: #e2e2e2;          /* DOOR3 Header */
+  --mz-scss-gray5: #cbd1d8;          /* DOOR3 gray-LT-textfield-outline */
+  --mz-scss-gray6: #edeef0;
+  --mz-scss-gray7: #cccccc;
+  --mz-scss-gray8: #f6f7f9;          /* DOOR3 white-openedtabs */
+  --mz-scss-gray9: rgba(39, 31, 43, 0.04);      /* Hover EZ Button Color for Light */
+  --mz-scss-gray10: rgba(250, 251, 252, 0.08);  /* Hover EZ Button Color for Dark */
+  --mz-scss-gray18: #adadad;
+  --mz-scss-gray27: rgba(255, 255, 255, 0.8);
+  --mz-scss-lightGray: #fafbfc;      /* DOOR3 white-LTmain */
+  --mz-scss-whiteColor: #ffffff;     /* DOOR3 white-panelbg */
+  --mz-scss-whiteColor1: rgba(250, 251, 252, 0.6); /* DOOR3 white-inactive */
+  --mz-scss-blue02: #f5fafe;
+  --mz-scss-blue03: #0000ff;
+  --mz-scss-blue04: #337ab7;
+  --mz-scss-orange: #ffa500;
+  --mz-scss-transparent: rgba(255, 255, 255, 0);
+
+  /* status */
+  --mz-scss-global_Blue1: #e3f2ff;
+  --mz-scss-global_Blue2: #457bcc;
+  --mz-scss-global_Blue3: #1972dd;
+  --mz-scss-global_Blue4: #1784f1;   /* DOOR3 blue-selected */
+  --mz-scss-global_Red1: #fde5ad;
+  --mz-scss-global_Red2: #e27a2f;
+  --mz-scss-global_Red3: #df1b1b;    /* DOOR3 red */
+  --mz-scss-global_Red4: #ffc6c6;
+  --mz-scss-global_Red5: #ff0000;
+  --mz-scss-global_Red6: #b00020;
+  --mz-scss-global_Red7: #ba3636;
+  --mz-scss-global_Green: #2fa26c;
+  --mz-scss-global_Green1: #c6f5d5;
+  --mz-scss-global_Green2: #2b9223;
+
+  /* accents + chromes */
+  --mz-scss-theme_light: #ffffff;
+  --mz-scss-theme_dark: #232f34;
+  --mz-scss-theme_bg1: #167d7d;
+  --mz-scss-theme_bg2: #ab750b;
+  --mz-scss-theme_bg3: #153a89;
+  --mz-scss-theme_bg4: #0e5f4c;
+  --mz-scss-theme_bg5: #7c0a02;
+  --mz-scss-theme_bg6: #4b1185;
+  --mz-scss-theme_bg7: #167d7d;
+  --mz-scss-theme_bg8: #ab750b;
+  --mz-scss-theme_bg9: #153a89;
+  --mz-scss-theme_bg10: #0e5f4c;
+  --mz-scss-theme_bg11: #7c0a02;
+  --mz-scss-theme_bg12: #4b1185;
+}

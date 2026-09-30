@@ -1,0 +1,25 @@
+/* Density — `<html density='compact'>`.
+   Exactly 7 tokens change, five of them dialog or form heights. This is a data-grid
+   row-height switch, not a spacing scale: no padding, margin or gap token responds to it.
+   Compact makes dialogs TALLER, not shorter — a compact grid fits more rows, so the
+   dialog showing one is given more room. Density is a rows-visible setting throughout.
+   Default is FULL (WebConstants.ts:32). */
+:root {
+  --mz-ag-row-height: 43px;
+  --mz-ag-cell-line-hght: 41px;
+  --mz-dialog-height-lg: 72rem;
+  --mz-dialog-height-xl: 85rem;
+  --mz-dialog-height-xxl: 90rem;
+  --mz-frm-height: 83vh;
+  --mz-frm-content-height: 75vh;
+}
+
+[density="compact"] {
+  --mz-ag-row-height: 22px;      /* -49% */
+  --mz-ag-cell-line-hght: 22px;  /* -46% */
+  --mz-dialog-height-lg: 85rem;  /* +18% */
+  --mz-dialog-height-xl: 100rem; /* +18% */
+  --mz-dialog-height-xxl: 110rem;/* +22% */
+  --mz-frm-height: 85vh;         /* +2%  */
+  --mz-frm-content-height: 78vh; /* +4%  */
+}
