@@ -28,7 +28,7 @@ html,body{margin:0;padding:0;background:#05080f;}*{box-sizing:border-box;}a{colo
   <div style="position:absolute;left:0;right:0;top:0;height:calc(100% + 52px)">
 
     <sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
-      <x-import component-from-global-scope="CompositionStage" from="./animations-v3.jsx ./buzz-scene.jsx" width="{{ 1600 }}" height="{{ 900 }}" scenes="{{ scenes }}" playback="{{ playback }}" bg="#05080f" hint-size="100%,100%">
+      <x-import component-from-global-scope="CompositionStage" from="./animations-v3.jsx ./buzz-scene.jsx" width="{{ 1600 }}" height="{{ 900 }}" scenes="{{ scenes }}" playback="{{ playback }}" persist-key="{{ runKey }}" bg="#05080f" hint-size="100%,100%">
         <x-import component-from-global-scope="Piece" hint-size="100%,100%"></x-import>
       </x-import>
     </sc-if>
@@ -129,12 +129,13 @@ class Component extends DCLogic {
     this.props.onDone(id);
   };
 
-  renderVals() {
-    return {
-      scenes: window.OM_SCENES,
-      playback: window.OM_PLAYBACK,
-      ready: !!window.OM_SCENES && !this.state.reloading,
-      cueLabel: this.state.ended ? 'Play \u21ba' : 'Skip \u2192',
+ renderVals() {
+  return {
+    scenes: window.OM_SCENES,
+    playback: window.OM_PLAYBACK,
+    runKey: 'vq-intro-' + (this._run || (this._run = Date.now())),
+    ready: !!window.OM_SCENES && !this.state.reloading,
+    cueLabel: this.state.ended ? 'Play \u21ba' : 'Skip \u2192',
       cueAction: this.state.ended ? this.replay : this.skip,
       home: this.goTo('home'),
       nav: [
